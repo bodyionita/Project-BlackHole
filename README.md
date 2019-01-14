@@ -53,5 +53,5 @@ A python file used for pulling data from [IEX's API](https://iextrading.com/deve
 
 ## License
 
-This project is licensed under the GNU General Public License v3.0 - see the [LICENSE.md](LICENSE.md) 
+This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE)
 file for details
