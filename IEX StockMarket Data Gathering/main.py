@@ -1,11 +1,13 @@
-from data_pull import pull_symbols, pull_historical
+from data_pull import pull_symbols, pull_symbols_extended, pull_historical
 from util import read_from_json_file
 from datetime import datetime
 
-def main():
+def pull_and_write_data():
+    """
 
+    """
     # Pull all symbols from API and write to json file
-    # pull_symbols()
+    pull_symbols()
 
     # Read all symbols' data from the json file
     symbols_data = read_from_json_file('symbols')
@@ -19,6 +21,13 @@ def main():
     for symbol_data in symbols_data[8000:]:
         symbols.append(symbol_data['symbol'])
     pull_historical(symbols, start_date, end_date)
+
+
+def main():
+
+    # pull_and_write_data()
+
+    pull_symbols_extended()
 
 
 if __name__ == '__main__':

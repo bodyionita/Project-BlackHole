@@ -1,6 +1,7 @@
 from iexfinance import get_available_symbols
-from iexfinance.stocks import get_historical_data
+from iexfinance.stocks import get_historical_data, Stock
 from iexfinance.utils.exceptions import *
+
 from util import write_to_json_file
 from datetime import datetime
 
@@ -14,6 +15,22 @@ def pull_symbols():
     symbols = get_available_symbols()
 
     write_to_json_file(data=symbols, filename='symbols')
+
+
+def pull_symbols_extended():
+    """
+
+    :return:
+    """
+    symbols = get_available_symbols()
+
+    symbols_extended = []
+    for symbol in symbols:
+        stock = Stock(symbol['symbol'], output_format='json')
+        symbol_extended = stock.get_company()
+        symbols_extended.append(symbol_extended)
+
+    write_to_json_file(data=symbols_extended, filename='symbols_extended')
 
 
 def pull_historical(symbols, date_start=None, date_end=None):
