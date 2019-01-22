@@ -19,7 +19,7 @@ visualising everything in Virtual Reality through the use of an Android mobile p
 
 ### Testing :heavy_check_mark:
 
-## Stock Market Data :chart_with_upwards_trend:
+## Stock Market Data :chart_with_upwards_trend: [![Build Status](https://travis-ci.com/bodyionita/Project-BlackHole.svg?branch=master)](https://travis-ci.com/bodyionita/Project-BlackHole)
 
 A python file used for pulling data from [IEX's API](https://iextrading.com/developer/) using the
 [IEX Finance](https://pypi.org/project/iexfinance/) python module and pushing the data to 
