@@ -11,7 +11,7 @@ class DataPuller:
     @staticmethod
     def pull_symbols():
         """
-        Gets all the stock symbols with the following keys and writes it to a file in the data folder
+        Gets all the stock symbols with the following keys and writes it to a file in the data folder.
 
         symbol	    refers to the symbol represented in Nasdaq Integrated symbology (INET).
         name	    refers to the name of the company or security.

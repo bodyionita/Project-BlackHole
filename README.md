@@ -1,4 +1,4 @@
-# Android VR - BlackHole [![Build Status](https://travis-ci.com/bodyionita/Project-BlackHole.svg?branch=master)](https://travis-ci.com/bodyionita/Project-BlackHole)
+# Android VR - BlackHole [![Build Status](https://travis-ci.com/bodyionita/Project-BlackHole.svg?branch=master)](https://travis-ci.com/bodyionita/Project-BlackHole) [![codecov](https://codecov.io/gh/bodyionita/Project-BlackHole/branch/master/graph/badge.svg)](https://codecov.io/gh/bodyionita/Project-BlackHole)
 
 *This is an industry project on which my dissertation is based on. The paper can be found [here]().
 The project development ran from :calendar: __09/2018__ to __04/2019__. :calendar:*
