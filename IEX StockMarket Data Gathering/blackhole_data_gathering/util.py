@@ -6,6 +6,7 @@ DIR = 'data/'
 
 def write_to_json_file(data, filename, subdir='', append=False):
     """
+    Method which takes data to dump it into a JSON file in the data folder
 
     :param data: [dict] or dict
     :param filename: string -> name of the file to be written to
@@ -33,6 +34,7 @@ def write_to_json_file(data, filename, subdir='', append=False):
 
 def read_from_json_file(filename, subdir=''):
     """
+    Method which reads a JSON file in the data folder and returns the object containing the data found in it
 
     :param filename: string -> name of the file to be read from
     :param subdir: string -> name of the subdirectory the file is located in. tailed with '/'
