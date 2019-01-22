@@ -42,10 +42,11 @@ class DataOrchestrator:
 
 def main():
 
-    orchestrator = DataOrchestrator()
+    # orchestrator = DataOrchestrator()
 
     # orchestrator.pull_and_write_data()
     # orchestrator.read_and_push_data()
+    return
 
 
 if __name__ == '__main__':

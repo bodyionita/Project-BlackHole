@@ -1,6 +1,6 @@
 from iexfinance import get_available_symbols
 from iexfinance.stocks import get_historical_data, Stock
-from iexfinance.utils.exceptions import *
+from iexfinance.utils.exceptions import IEXSymbolError
 
 from blackhole_data_gathering.util import write_to_json_file
 from datetime import datetime
@@ -91,4 +91,3 @@ class DataPuller:
                     outfile.write(str(e)+'\n')
             else:
                 write_to_json_file(data=symbol_data, filename=symbol, subdir='symbol_data/')
-

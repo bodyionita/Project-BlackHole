@@ -10,8 +10,8 @@ install:
 
 script:
   - flake8 $DATA_GATHER_FOLDER/ 
-  - coverage -m unittest discover -s $DATA_GATHER_FOLDER/tests/unit -v
-  - coverage -m unittest discover -s $DATA_GATHER_FOLDER/tests/integration -v
+  - coverage run -m unittest discover -s $DATA_GATHER_FOLDER/tests/unit -v
+  - coverage run -m unittest discover -s $DATA_GATHER_FOLDER/tests/integration -v
 
 after_success:
   - codecov
