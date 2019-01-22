@@ -9,9 +9,9 @@ install:
   - pip install -r $DATA_GATHER_FOLDER/requirements.txt
 
 script:
-  - flake8 DATA_GATHER_FOLDER/ 
-  - python -m unittest discover -s $DATA_GATHER_FOLDER/tests/unit -v
-  - python -m unittest discover -s $DATA_GATHER_FOLDER/tests/integration -v
+  - flake8 $DATA_GATHER_FOLDER/ 
+  - coverage -m unittest discover -s $DATA_GATHER_FOLDER/tests/unit -v
+  - coverage -m unittest discover -s $DATA_GATHER_FOLDER/tests/integration -v
 
 after_success:
   - codecov

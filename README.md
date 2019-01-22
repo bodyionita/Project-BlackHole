@@ -1,4 +1,4 @@
-# Android VR - BlackHole
+# Android VR - BlackHole [![Build Status](https://travis-ci.com/bodyionita/Project-BlackHole.svg?branch=master)](https://travis-ci.com/bodyionita/Project-BlackHole)
 
 *This is an industry project on which my dissertation is based on. The paper can be found [here]().
 The project development ran from :calendar: __09/2018__ to __04/2019__. :calendar:*
@@ -19,7 +19,7 @@ visualising everything in Virtual Reality through the use of an Android mobile p
 
 ### Testing :heavy_check_mark:
 
-## Stock Market Data :chart_with_upwards_trend: [![Build Status](https://travis-ci.com/bodyionita/Project-BlackHole.svg?branch=master)](https://travis-ci.com/bodyionita/Project-BlackHole)
+## Stock Market Data 
 
 A python file used for pulling data from [IEX's API](https://iextrading.com/developer/) using the
 [IEX Finance](https://pypi.org/project/iexfinance/) python module and pushing the data to 
