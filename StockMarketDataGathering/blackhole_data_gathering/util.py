@@ -49,4 +49,3 @@ def read_from_json_file(filename, subdir=''):
     with open(path, mode) as infile:
         data = json.load(infile)
         return data
-
