@@ -9,5 +9,5 @@ setup(
     author='Bogdan Ionita',
     author_email='bogdan.ionita.15@ucl.ac.uk',
     packages=['blackhole_data_gathering'],
-    install_requires=['iexfinance'],
+    install_requires=['iexfinance', 'codecov', 'flake8'],
 )

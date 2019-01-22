@@ -6,10 +6,12 @@ python:
   - 3.5
 
 install:
-  - pip install codecov
+  - pip install -r requirements.txt
 
-#script:
-#  - coverage run tests.py
+script:
+  - flake8 IEX\ StockMarket\ Data\ Gathering/ 
+  - python -m unittest discover -s tests/unit -v
+  - python -m unittest discover -s tests/integration -v
 
 after_success:
   - codecov

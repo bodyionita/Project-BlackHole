@@ -6,6 +6,7 @@ from datetime import datetime
 class DataOrchestrator:
     """
     Orchestrator of the data pulling from the API and pushing into the Azure with a default range of up to 5 years
+
     """
 
     def __init__(self, no_years=5):
