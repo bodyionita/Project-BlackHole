@@ -1,7 +1,3 @@
-env:
-  global:
-    - DATA_GATHER_FOLDER=IEX\ StockMarket\ Data\ Gathering
-
 sudo: false
 
 language: python
