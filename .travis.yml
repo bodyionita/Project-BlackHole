@@ -1,3 +1,5 @@
+data_gather_folder: IEX\ StockMarket\ Data\ Gathering
+
 sudo: false
 
 language: python
@@ -6,12 +8,12 @@ python:
   - 3.5
 
 install:
-  - pip install -r IEX\ StockMarket\ Data\ Gathering/requirements.txt
+  - pip install -r {{data_gather_folder}}/requirements.txt
 
 script:
-  - flake8 IEX\ StockMarket\ Data\ Gathering/ 
-  - python -m unittest discover -s tests/unit -v
-  - python -m unittest discover -s tests/integration -v
+  - flake8 {{data_gather_folder}}/ 
+  - python -m unittest discover -s {{data_gather_folder}}/tests/unit -v
+  - python -m unittest discover -s {{data_gather_folder}}/tests/integration -v
 
 after_success:
   - codecov
