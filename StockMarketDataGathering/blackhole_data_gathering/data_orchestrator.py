@@ -37,7 +37,7 @@ class DataOrchestrator:
         DataPuller.pull_historical(symbols, start_date, end_date)
 
     def read_and_push_data(self):
-        return
+        raise NotImplementedError
 
 
 def main():
