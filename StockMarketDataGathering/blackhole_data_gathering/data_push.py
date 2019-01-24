@@ -5,4 +5,3 @@ class DataPusher:
 
     def mock(self):
         raise NotImplementedError
-

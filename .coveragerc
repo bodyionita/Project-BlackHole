@@ -13,3 +13,4 @@ omit =
     tests/*
     tests/unit/*
     tests/integration/*
+    setup.py
