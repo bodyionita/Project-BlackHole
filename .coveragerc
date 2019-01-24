@@ -1,5 +1,6 @@
 [run]
 branch = True
+source=StockMarketDataGathering
 
 [report]
 exclude_lines =
