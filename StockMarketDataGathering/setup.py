@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(
     name='blackhole_data_gathering',
@@ -8,6 +8,6 @@ setup(
     license='GNU General Public License v3.0',
     author='Bogdan Ionita',
     author_email='bogdan.ionita.15@ucl.ac.uk',
-    packages=['blackhole_data_gathering'],
+    packages=find_packages(),
     install_requires=['iexfinance', 'codecov', 'flake8'],
 )

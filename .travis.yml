@@ -5,6 +5,11 @@ language: python
 python:
   - 3.5
 
+before_install:
+  - "pip install -U pip"
+  - "python $DATA_GATHER_FOLDER/setup.py install"
+
+
 install:
   - pip install -r $DATA_GATHER_FOLDER/requirements.txt
 
