@@ -2,7 +2,7 @@ import unittest
 
 
 class TestDataPush(unittest.TestCase):
-    def test_example(self):
+    def test_placeholer(self):
         self.assertEqual(1, 1)
 
 

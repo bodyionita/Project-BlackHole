@@ -4,21 +4,16 @@ import os
 DIR = 'data/'
 
 
-def write_to_json_file(data, filename, subdir='', append=False):
+def write_to_json_file(data, filename, subdir=''):
     """
     Method which takes data to dump it into a JSON file in the data folder.
 
     :param data: [dict] or dict
     :param filename: string -> name of the file to be written to
     :param subdir: string -> subdirectory name for putting the file in. tailed with '/'
-    :param append: bool ->  true to append to the file or overwrite otherwise(default)
     """
     path = DIR + subdir
-
-    if append:
-        mode = 'a'
-    else:
-        mode = 'w'
+    mode = 'w'
 
     if not os.path.exists(path):
         os.makedirs(path)

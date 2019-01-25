@@ -21,19 +21,23 @@ class DataOrchestrator:
         """
         # Pull all symbols from API and write to json file
         DataPuller.pull_symbols()
-        DataPuller.pull_symbols_extended()
 
         # Read all symbols' data from the json file
         symbols_data = read_from_json_file('symbols')
+
+        # Aggregate into array only symbols
+        symbols = []
+        for symbol_data in symbols_data:
+            symbols.append(symbol_data['symbol'])
+
+        # Pull extended symbols data from API and write to json file
+        DataPuller.pull_symbols_extended(symbols)
 
         # Set start and end date for the historical data
         end_date = datetime.today()
         start_date = datetime(end_date.year - self.number_of_years, end_date.month, end_date.day)
 
         # One by one, get historical data for each of the symbols and write into a separate file
-        symbols = []
-        for symbol_data in symbols_data:
-            symbols.append(symbol_data['symbol'])
         DataPuller.pull_historical(symbols, start_date, end_date)
 
     def read_and_push_data(self):

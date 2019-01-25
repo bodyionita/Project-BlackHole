@@ -9,7 +9,7 @@ from datetime import datetime
 class DataPuller:
 
     @staticmethod
-    def pull_symbols():
+    def pull_symbols(filename='symbols', subdir=''):
         """
         Gets all the stock symbols with the following keys and writes it to a file in the data folder.
 
@@ -20,14 +20,16 @@ class DataPuller:
         type	    refers to the common issue type
         iexId	    unique ID applied by IEX to track securities through symbol changes.
 
+        :param filename: string -> name of the file the data should be written to
+        :param subdir: string -> subdirectory name followed by /
         """
 
         symbols = get_available_symbols()
 
-        write_to_json_file(data=symbols, filename='symbols')
+        write_to_json_file(data=symbols, filename=filename, subdir=subdir)
 
     @staticmethod
-    def pull_symbols_extended():
+    def pull_symbols_extended(symbols, filename='symbols_extended', subdir='symbol_data'):
         """
         Gets all the stock symbols with the following keys and writes it to a file in the data folder
         and differs from the simple symbols method as it contains a bit more data
@@ -51,16 +53,17 @@ class DataPuller:
         sector	    the sector in which the company operates
         tags	    an array of strings used to classify the company.
 
+        :param symbols: [string] -> list of all the symbols to get data for
+        :param filename: string -> name of the file the data should be written to
+        :param subdir: string -> subdirectory name followed by /
         """
-        symbols = get_available_symbols()
-
         symbols_extended = []
         for symbol in symbols:
             stock = Stock(symbol['symbol'], output_format='json')
             symbol_extended = stock.get_company()
             symbols_extended.append(symbol_extended)
 
-        write_to_json_file(data=symbols_extended, filename='symbols_extended')
+        write_to_json_file(data=symbols_extended, filename=filename, subdir=subdir)
 
     @staticmethod
     def pull_historical(symbols, date_start=None, date_end=None):
