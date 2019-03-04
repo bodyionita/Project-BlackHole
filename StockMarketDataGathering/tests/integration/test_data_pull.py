@@ -3,6 +3,7 @@ from blackhole_data_gathering.util import read_from_json_file
 
 import unittest
 import shutil
+from datetime import datetime
 
 
 class TestDataPull(unittest.TestCase):
@@ -16,7 +17,8 @@ class TestDataPull(unittest.TestCase):
 
     @classmethod
     def tearDownClass(self):
-        shutil.rmtree(self.dir)
+        # shutil.rmtree(self.dir)
+        placeholder = 1
 
     def test_pull_symbols(self):
         filename = 'test_symbols'
@@ -57,6 +59,25 @@ class TestDataPull(unittest.TestCase):
 
         self.data_puller.pull_symbols_extended(symbols=symbols, filename=filename, subdir=self.subdir)
         data = read_from_json_file(filename=filename, subdir=self.subdir)
+
+        self.assertEqual(data_verify, data)
+
+    def test_pull_historical_data(self):
+        symbols = ['A']
+        date = datetime(2019, 1, 14)
+
+        data_verify = {
+                        "2019-01-14": {
+                            "open": 69.72,
+                            "high": 70.29,
+                            "low": 69.67,
+                            "close": 69.75,
+                            "volume": 2182673
+                        }
+                      }
+
+        self.data_puller.pull_historical(symbols, date, date, self.subdir)
+        data = read_from_json_file(symbols[0] + '.json', self.subdir)
 
         self.assertEqual(data_verify, data)
 

@@ -66,7 +66,7 @@ class DataPuller:
         write_to_json_file(data=symbols_extended, filename=filename, subdir=subdir)
 
     @staticmethod
-    def pull_historical(symbols, date_start=None, date_end=None):
+    def pull_historical(symbols, date_start=None, date_end=None, subdir='symbol_data/'):
         """
         Gets historical data with a granularity of 1 day for a list of symbols and writes them into separate JSON
         files into the data folder with the following keys
@@ -81,6 +81,7 @@ class DataPuller:
         :param symbols: [string] -> list of all the symbols to get data for
         :param date_start: datetime -> start date of the historical data
         :param date_end: datetime -> end date of the historical data
+        :param subdir: string -> subdirectory name followed by /
         """
         if (date_start is None) and (date_end is None):
             date_end = datetime.today()
@@ -90,7 +91,7 @@ class DataPuller:
             try:
                 symbol_data = get_historical_data(symbol, date_start, date_end, output_format='json')
             except IEXSymbolError as e:
-                with open('data/symbols_not_found.txt', 'a') as outfile:
+                with open('data/symbols_not_downloaded.txt', 'a') as outfile:
                     outfile.write(str(e)+'\n')
             else:
-                write_to_json_file(data=symbol_data, filename=symbol, subdir='symbol_data/')
+                write_to_json_file(data=symbol_data, filename=symbol, subdir=subdir)

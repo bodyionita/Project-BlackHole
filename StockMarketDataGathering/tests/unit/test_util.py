@@ -19,6 +19,13 @@ class TestUtil(unittest.TestCase):
     def tearDownClass(self):
         shutil.rmtree(self.dir)
 
+        infile = open(self.data_dir + 'symbols_not_downloaded.txt', 'r')
+        lines = infile.read().splitlines()
+        infile.close()
+        with open(self.data_dir + 'symbols_not_downloaded.txt', 'w') as outfile:
+            for line in lines:
+                outfile.write(str(line) + '\n')
+
     def test_1_read_inexistent_file(self):
         self.assertRaises(Exception, read_from_json_file, self.filename, self.subdir)
 
@@ -32,6 +39,13 @@ class TestUtil(unittest.TestCase):
     def test_3_read_file(self):
         loaded = read_from_json_file(filename=self.filename, subdir=self.subdir)
         self.assertEqual(self.data, loaded)
+
+    def test_4_write_file_invalid_filename(self):
+        write_to_json_file(data=self.data, filename='TESTING INVALID FILENAME *', subdir=self.subdir)
+
+        with open(self.data_dir + 'symbols_not_downloaded.txt', 'r') as infile:
+            lines = infile.read().splitlines()
+            self.assertEqual(lines[-1], '[Errno 22] Invalid argument: \'data/test/TESTING INVALID FILENAME *.json\'')
 
 
 if __name__ == '__main__':

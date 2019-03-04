@@ -23,7 +23,7 @@ def write_to_json_file(data, filename, subdir=''):
         with open(file_path, mode) as outfile:
             json.dump(data, outfile, indent=2, separators=(',', ': '))
     except OSError as e:
-        with open('data/symbols_not_found.txt', 'a') as outfile:
+        with open('data/symbols_not_downloaded.txt', 'a') as outfile:
             outfile.write(str(e) + '\n')
 
 

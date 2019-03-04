@@ -41,16 +41,17 @@ class DataOrchestrator:
         DataPuller.pull_historical(symbols, start_date, end_date)
 
     def read_and_push_data(self):
-        raise NotImplementedError
+        """
+        Read all the data to be worked with from the data folder and push it to Azure
+        """
 
 
 def main():
 
-    # orchestrator = DataOrchestrator()
+    orchestrator = DataOrchestrator()
 
     # orchestrator.pull_and_write_data()
-    # orchestrator.read_and_push_data()
-    return
+    orchestrator.read_and_push_data()
 
 
 if __name__ == '__main__':
