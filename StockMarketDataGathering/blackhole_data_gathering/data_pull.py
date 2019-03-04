@@ -1,4 +1,4 @@
-from iexfinance import get_available_symbols
+from iexfinance.refdata import get_symbols
 from iexfinance.stocks import get_historical_data, Stock
 from iexfinance.utils.exceptions import IEXSymbolError
 
@@ -24,7 +24,7 @@ class DataPuller:
         :param subdir: string -> subdirectory name followed by /
         """
 
-        symbols = get_available_symbols()
+        symbols = get_symbols()
 
         write_to_json_file(data=symbols, filename=filename, subdir=subdir)
 
@@ -91,7 +91,7 @@ class DataPuller:
             try:
                 symbol_data = get_historical_data(symbol, date_start, date_end, output_format='json')
             except IEXSymbolError as e:
-                with open('data/symbols_not_downloaded.txt', 'a') as outfile:
+                with open('data/symbols_not_found.txt', 'a') as outfile:
                     outfile.write(str(e)+'\n')
             else:
                 write_to_json_file(data=symbol_data, filename=symbol, subdir=subdir)

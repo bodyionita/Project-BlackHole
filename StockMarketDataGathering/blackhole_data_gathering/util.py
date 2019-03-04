@@ -23,7 +23,7 @@ def write_to_json_file(data, filename, subdir=''):
         with open(file_path, mode) as outfile:
             json.dump(data, outfile, indent=2, separators=(',', ': '))
     except OSError as e:
-        with open('data/symbols_not_downloaded.txt', 'a') as outfile:
+        with open('data/symbols_not_found.txt', 'a') as outfile:
             outfile.write(str(e) + '\n')
 
 
@@ -37,7 +37,7 @@ def read_from_json_file(filename, subdir=''):
     """
     path = DIR + subdir + filename + '.json'
     mode = 'r'
-
+    print(path)
     if not os.path.exists(path):
         raise Exception('file does not exist', filename, subdir)
 

@@ -46,7 +46,7 @@ class TestDataPull(unittest.TestCase):
                                        " applied chemical markets. The company provides application focused " +
                                        "solutions that include instruments, software, services and consumables" +
                                        " for the entire laboratory workflow.",
-                        "CEO": "Michael R. McMullen",
+                        "CEO": "",
                         "issueType": "cs",
                         "sector": "Healthcare",
                         "tags": [
@@ -76,7 +76,7 @@ class TestDataPull(unittest.TestCase):
                       }
 
         self.data_puller.pull_historical(symbols, date, date, self.subdir)
-        data = read_from_json_file(symbols[0] + '.json', self.subdir)
+        data = read_from_json_file(symbols[0], self.subdir)
 
         self.assertEqual(data_verify, data)
 
