@@ -37,7 +37,6 @@ def read_from_json_file(filename, subdir=''):
     """
     path = DIR + subdir + filename + '.json'
     mode = 'r'
-    print(path)
     if not os.path.exists(path):
         raise Exception('file does not exist', filename, subdir)
 
