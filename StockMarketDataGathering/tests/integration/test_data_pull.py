@@ -17,8 +17,7 @@ class TestDataPull(unittest.TestCase):
 
     @classmethod
     def tearDownClass(self):
-        # shutil.rmtree(self.dir)
-        placeholder = 1
+        shutil.rmtree(self.dir)
 
     def test_pull_symbols(self):
         filename = 'test_symbols'
