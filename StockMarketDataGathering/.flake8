@@ -1,3 +1,0 @@
-[flake8]
-exclude = .git,__pycache__,.idea
-max-line-length = 120

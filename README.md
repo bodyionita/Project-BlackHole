@@ -13,21 +13,16 @@ The aim of this project is to transform raw data sets into an interactive and im
 visualising everything in Virtual Reality through the use of an Android mobile phone and a VR headset like
 [Google Cardboard](https://vr.google.com/cardboard/)
 
+
 ## BlackHole - Unity
 
 ### Getting Started
 
-### Testing :heavy_check_mark:
+#### Stock Market Data 
 
-## Stock Market Data 
+In order to get the data required for this project, please visit [Project BlackHole Data Gathering](https://github.com/bodyionita/Project-BlackHole-DataGathering) repo.
 
-A python file used for pulling data from [IEX's API](https://iextrading.com/developer/) using the
-[IEX Finance](https://pypi.org/project/iexfinance/) python module and pushing the data to 
-[Microsoft Azure's](https://azure.microsoft.com/en-us/) Database.
-
-### Getting Started
-
-### Testing :heavy_check_mark:
+### Testing 
 
 
 ## Contributors :pencil2:
