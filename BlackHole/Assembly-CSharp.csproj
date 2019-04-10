@@ -60,11 +60,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Simulation\galaxy\Scripts\ActiveController.cs" />
-    <Compile Include="Assets\Simulation\galaxy\Scripts\Planet.cs" />
-    <Compile Include="Assets\Simulation\galaxy\Scripts\PlanetController.cs" />
-    <Compile Include="Assets\Simulation\galaxy\Scripts\PlanetFactory.cs" />
-    <Compile Include="Assets\Simulation\galaxy\Scripts\PlanetsManager.cs" />
+    <Compile Include="Assets\Scripts\ActiveController.cs" />
+    <Compile Include="Assets\Scripts\Main Menu\MainMenuUI.cs" />
+    <Compile Include="Assets\Scripts\Planet\Planet.cs" />
+    <Compile Include="Assets\Scripts\Planet\PlanetController.cs" />
+    <Compile Include="Assets\Scripts\Planet\PlanetFactory.cs" />
+    <Compile Include="Assets\Scripts\Planet\PlanetsManager.cs" />
+    <Compile Include="Assets\Scripts\SceneLoader.cs" />
+    <Compile Include="Assets\Scripts\SimSessionManager.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>D:/Work/MEng Computer Science/4th year/COMP0138 Individual Project for Year 4 MEng/Project-BlackHole/BlackHole/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
