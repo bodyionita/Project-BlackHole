@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/mainmenu.unity
+- path: Assets/Third Party/CardboardControl/DemoScenes/ControlsDemo.unity
   isLoaded: 1
   isActive: 1
