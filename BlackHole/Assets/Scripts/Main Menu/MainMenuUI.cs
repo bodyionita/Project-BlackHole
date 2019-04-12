@@ -4,7 +4,19 @@ using UnityEngine;
 
 public class MainMenuUI : MonoBehaviour
 {
-    public void StartButtonPressed()
+    public CardboardControl cardboard;
+
+    private void OnEnable()
+    {
+        cardboard.trigger.OnClick += StartButtonPressed;
+    }
+
+    private void OnDisable()
+    {
+        cardboard.trigger.OnClick -= StartButtonPressed;
+    }
+
+    private void StartButtonPressed(object sender)
     {
         // Call game scene
         SceneLoader.LoadScene(SceneName.Simulation);

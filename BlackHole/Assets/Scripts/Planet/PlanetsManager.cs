@@ -4,30 +4,70 @@ using UnityEngine;
 
 public class PlanetsManager : MonoBehaviour
 {
-    public GameObject planetContainer;
-    float x = 1000f;
-
-    void Start()
+    private int totalPlanets = 0;
+    private int _loadedPlanets = 0;
+    private int loadedPlanets
     {
-        
+        get { return _loadedPlanets; }
+        set { _loadedPlanets = value; if (_loadedPlanets == totalPlanets) OnPlanetsLoaded(); }
     }
 
-    void OnEnable()
+    // Planet container
+    [SerializeField]
+    private Transform container;
+
+    // Event to check all planets have been fully loaded
+    public delegate void PlanetsLoadedHandler();
+    public static event PlanetsLoadedHandler OnPlanetsLoaded;
+
+    // Event to wait for component gathering
+    public delegate void StatusCommandHandler(bool new_status, int planetIndex=-1);
+    public static event StatusCommandHandler OnStatusCommand;
+
+    // Event to handle spawn request
+    public delegate GameObject SpawnRequestHandler(Transform c);
+    public static event SpawnRequestHandler OnSpawnRequest;
+
+    // Keep track of the planets controller by their assigned indexes
+    private Dictionary<int, PlanetController> IndexToControllerMap = new Dictionary<int, PlanetController>();    
+
+    public void UpdatePlanets(Dictionary<int, Planet> planets)
     {
-        PlanetController.OnComponentsGathered += TestPlanets;
+        foreach (var planet in planets)
+        {
+            PlanetController pc = IndexToControllerMap[planet.Key];
+            pc.UpdatePlanet(planet.Value);
+        }
     }
 
-    void TestPlanets(PlanetController pc)
+    public void SpawnRequest(int requested_number)
     {
-        Planet p = new Planet(new Color(255 - x / 6, x / 12, 0), x / 500, x / 5, x / 100, 0 * (x / 60 - 15));
-        pc.UpdatePlanet(p);
-        pc.status.Activate();
-        x += 1;
+        totalPlanets += requested_number;
+        for (int i = 1; i <= requested_number; i++)
+            if (OnSpawnRequest != null) OnSpawnRequest(container);
+    }
+
+
+    public void SetPlanets(bool active)
+    {
+        if (OnStatusCommand != null) OnStatusCommand(active);
+    }    
+
+    private void OnEnable()
+    {
+        PlanetController.OnComponentsGathered += PlanetLoaded;
     }
 
     private void OnDisable()
     {
-        PlanetController.OnComponentsGathered -= TestPlanets;
+        PlanetController.OnComponentsGathered -= PlanetLoaded;
+    }
+
+    private int PlanetLoaded(PlanetController pc)
+    {
+        loadedPlanets += 1;
+        IndexToControllerMap[loadedPlanets] = pc;
+        return loadedPlanets;
     }
 
 }

@@ -14,22 +14,16 @@ public class Planet
     public float orbitRadius;
     
     [Range(5f, 30f)]
-    private float orbitPeriod;
-    public float OrbitPeriod
+    private float _orbitPeriod;
+    public float orbitPeriod
     {
-        get { return orbitPeriod; }
-        set { orbitPeriod = value; OnPeriodChanged(); }
+        get { return _orbitPeriod; }
+        set { _orbitPeriod = value; OnPeriodChanged(); }
     }
 
     [Range(0f, 45f)]
     public float orbitAngle;
-    
-    private float orbitSpeed;
-    public float OrbitSpeed
-    {
-        get { return orbitSpeed; }
-        set { orbitSpeed = value; }
-    }
+    public float orbitSpeed { get; private set; }
 
 
     public Planet(Color _color, float _size=1f, float _orbitRadius=5f, float _orbitPeriod=5f, float _orbitAngle=0f)
@@ -37,13 +31,13 @@ public class Planet
         color = _color;
         size = _size;
         orbitRadius = _orbitRadius;
-        OrbitPeriod = _orbitPeriod;
+        orbitPeriod = _orbitPeriod;
         orbitAngle = _orbitAngle;
     }
 
-    public void OnPeriodChanged()
+    private void OnPeriodChanged()
     {
-        OrbitSpeed = 360f / OrbitPeriod;
+        orbitSpeed = 360f / orbitPeriod;
     }
 
 }

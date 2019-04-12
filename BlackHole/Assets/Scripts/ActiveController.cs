@@ -5,30 +5,25 @@ using UnityEngine;
 [System.Serializable]
 public class ActiveController
 {
-    private bool isActive;
-    public bool IsActive
+    private bool _isActive;
+    public bool isActive
     {
-        get { return isActive; }
+        get { return _isActive; }
     }
 
     public ActiveController()
     {
-        isActive = false;
+        _isActive = false;
     }
 
     public void Activate()
     {
-        isActive = true;
+        _isActive = true;
     }
 
     public void Deactivate()
     {
-        isActive = false;
-    }
-
-    public bool Active()
-    {
-        return isActive;
+        _isActive = false;
     }
 
 }

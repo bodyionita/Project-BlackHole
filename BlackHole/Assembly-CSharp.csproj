@@ -61,6 +61,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\ActiveController.cs" />
+    <Compile Include="Assets\Scripts\Data\DataStorage.cs" />
+    <Compile Include="Assets\Scripts\Data\DataStream.cs" />
+    <Compile Include="Assets\Scripts\Data\DataTranslator.cs" />
+    <Compile Include="Assets\Scripts\Data\DbConnection.cs" />
+    <Compile Include="Assets\Scripts\Data\PlanetDataSmoothner.cs" />
     <Compile Include="Assets\Scripts\Main Menu\MainMenuUI.cs" />
     <Compile Include="Assets\Scripts\Planet\Planet.cs" />
     <Compile Include="Assets\Scripts\Planet\PlanetController.cs" />
@@ -80,80 +85,79 @@
     <Compile Include="Assets\Third Party\CardboardControl\Scripts\CardboardControlTrigger.cs" />
     <Compile Include="Assets\Third Party\CardboardControl\Scripts\ParsedMagnetData.cs" />
     <Compile Include="Assets\Third Party\CardboardControl\Scripts\ParsedTouchData.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Beta\Demos\Scripts\DemoObjectController6DoF.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Beta\Demos\Scripts\DemoSeeThroughController.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Beta\Scripts\GvrBetaControllerInput.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Beta\Scripts\GvrBetaControllerState.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Beta\Scripts\GvrBetaControllerVisualMulti.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Beta\Scripts\GvrBetaHeadset.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Beta\Scripts\GvrBetaSettings.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Beta\Scripts\GvrControllerInputDeviceExtension.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Beta\Scripts\Internal\GvrBetaAndroidNativeControllerInputProvider.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Beta\Scripts\Internal\GvrBetaEditorControllerInputProvider.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Beta\Scripts\Internal\GvrBetaHeadsetProvider.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Beta\Scripts\Internal\GvrBetaSettingsProvider.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Demos\Scripts\DemoInfoPanel.cs" />
     <Compile Include="Assets\Third Party\GoogleVR\Demos\Scripts\DemoInputManager.cs" />
     <Compile Include="Assets\Third Party\GoogleVR\Demos\Scripts\DemoSceneManager.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Demos\Scripts\HelloVR\HeadsetDemoManager.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Demos\Scripts\HelloVR\HelloVRManager.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Demos\Scripts\HelloVR\ObjectController.cs" />
+    <Compile Include="Assets\Third Party\GoogleVR\Demos\Scripts\GVRDemo\GVRDemoManager.cs" />
+    <Compile Include="Assets\Third Party\GoogleVR\Demos\Scripts\GVRDemo\Teleport.cs" />
     <Compile Include="Assets\Third Party\GoogleVR\Demos\Scripts\KeyboardDemo\KeyboardDelegateExample.cs" />
     <Compile Include="Assets\Third Party\GoogleVR\Demos\Scripts\PermissionsDemo\PermissionsFlowManager.cs" />
+    <Compile Include="Assets\Third Party\GoogleVR\Demos\Scripts\ScrollingUIDemo\PaginatedScrolling\JumpToPage.cs" />
+    <Compile Include="Assets\Third Party\GoogleVR\Demos\Scripts\ScrollingUIDemo\PaginatedScrolling\PagedScrollBar.cs" />
+    <Compile Include="Assets\Third Party\GoogleVR\Demos\Scripts\ScrollingUIDemo\PaginatedScrolling\PagedScrollRect.cs" />
+    <Compile Include="Assets\Third Party\GoogleVR\Demos\Scripts\ScrollingUIDemo\PaginatedScrolling\PageProviders\ChildrenPageProvider.cs" />
+    <Compile Include="Assets\Third Party\GoogleVR\Demos\Scripts\ScrollingUIDemo\PaginatedScrolling\PageProviders\IPageProvider.cs" />
+    <Compile Include="Assets\Third Party\GoogleVR\Demos\Scripts\ScrollingUIDemo\PaginatedScrolling\PageProviders\PooledPageProvider.cs" />
+    <Compile Include="Assets\Third Party\GoogleVR\Demos\Scripts\ScrollingUIDemo\PaginatedScrolling\PageProviders\PrefabPageProvider.cs" />
+    <Compile Include="Assets\Third Party\GoogleVR\Demos\Scripts\ScrollingUIDemo\PaginatedScrolling\ScrollEffects\BaseScrollEffect.cs" />
+    <Compile Include="Assets\Third Party\GoogleVR\Demos\Scripts\ScrollingUIDemo\PaginatedScrolling\ScrollEffects\BaseTile.cs" />
+    <Compile Include="Assets\Third Party\GoogleVR\Demos\Scripts\ScrollingUIDemo\PaginatedScrolling\ScrollEffects\FadeScrollEffect.cs" />
+    <Compile Include="Assets\Third Party\GoogleVR\Demos\Scripts\ScrollingUIDemo\PaginatedScrolling\ScrollEffects\FloatTile.cs" />
+    <Compile Include="Assets\Third Party\GoogleVR\Demos\Scripts\ScrollingUIDemo\PaginatedScrolling\ScrollEffects\MaskedTile.cs" />
+    <Compile Include="Assets\Third Party\GoogleVR\Demos\Scripts\ScrollingUIDemo\PaginatedScrolling\ScrollEffects\ScaleScrollEffect.cs" />
+    <Compile Include="Assets\Third Party\GoogleVR\Demos\Scripts\ScrollingUIDemo\PaginatedScrolling\ScrollEffects\TiledPage.cs" />
+    <Compile Include="Assets\Third Party\GoogleVR\Demos\Scripts\ScrollingUIDemo\PaginatedScrolling\ScrollEffects\TileScrollEffect.cs" />
+    <Compile Include="Assets\Third Party\GoogleVR\Demos\Scripts\ScrollingUIDemo\PaginatedScrolling\ScrollEffects\TranslateScrollEffect.cs" />
+    <Compile Include="Assets\Third Party\GoogleVR\Demos\Scripts\ScrollingUIDemo\Pooling\GameObjectPool.cs" />
+    <Compile Include="Assets\Third Party\GoogleVR\Demos\Scripts\ScrollingUIDemo\Pooling\GameObjectPoolController.cs" />
+    <Compile Include="Assets\Third Party\GoogleVR\Demos\Scripts\ScrollingUIDemo\Pooling\IObjectPool.cs" />
+    <Compile Include="Assets\Third Party\GoogleVR\Demos\Scripts\ScrollingUIDemo\Pooling\ObjectPool.cs" />
+    <Compile Include="Assets\Third Party\GoogleVR\Demos\Scripts\ScrollingUIDemo\Pooling\ObjectPoolManager.cs" />
+    <Compile Include="Assets\Third Party\GoogleVR\Demos\Scripts\ScrollingUIDemo\Tabs\Tab.cs" />
+    <Compile Include="Assets\Third Party\GoogleVR\Demos\Scripts\ScrollingUIDemo\Tabs\TabGroup.cs" />
+    <Compile Include="Assets\Third Party\GoogleVR\Demos\Scripts\ScrollingUIDemo\Transitions\IUITransition.cs" />
+    <Compile Include="Assets\Third Party\GoogleVR\Demos\Scripts\ScrollingUIDemo\Transitions\UIFadeTransition.cs" />
+    <Compile Include="Assets\Third Party\GoogleVR\Demos\Scripts\VideoDemo\AppButtonInput.cs" />
     <Compile Include="Assets\Third Party\GoogleVR\Demos\Scripts\VideoDemo\AutoPlayVideo.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Demos\Scripts\VideoDemo\InputEvents\BoolEvent.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Demos\Scripts\VideoDemo\InputEvents\ButtonEvent.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Demos\Scripts\VideoDemo\InputEvents\FloatEvent.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Demos\Scripts\VideoDemo\InputEvents\GameObjectEvent.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Demos\Scripts\VideoDemo\InputEvents\TouchPadEvent.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Demos\Scripts\VideoDemo\InputEvents\TransformEvent.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Demos\Scripts\VideoDemo\InputEvents\Vector2Event.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Demos\Scripts\VideoDemo\InputEvents\Vector3Event.cs" />
+    <Compile Include="Assets\Third Party\GoogleVR\Demos\Scripts\VideoDemo\InputEvents.cs" />
+    <Compile Include="Assets\Third Party\GoogleVR\Demos\Scripts\VideoDemo\MenuHandler.cs" />
+    <Compile Include="Assets\Third Party\GoogleVR\Demos\Scripts\VideoDemo\PositionSwapper.cs" />
     <Compile Include="Assets\Third Party\GoogleVR\Demos\Scripts\VideoDemo\ScrubberEvents.cs" />
     <Compile Include="Assets\Third Party\GoogleVR\Demos\Scripts\VideoDemo\SwitchVideos.cs" />
+    <Compile Include="Assets\Third Party\GoogleVR\Demos\Scripts\VideoDemo\ToggleAction.cs" />
     <Compile Include="Assets\Third Party\GoogleVR\Demos\Scripts\VideoDemo\VideoControlsManager.cs" />
     <Compile Include="Assets\Third Party\GoogleVR\Demos\Scripts\VideoDemo\VideoPlayerReference.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Scripts\Cardboard\GvrReticlePointer.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Scripts\Controller\ArmModel\GvrArmModel.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Scripts\Controller\ArmModel\GvrBaseArmModel.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Scripts\Controller\ArmModel\IGvrArmModelReceiver.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Scripts\Controller\GvrControllerInput.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Scripts\Controller\GvrControllerInputDevice.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Scripts\Controller\GvrControllerReticleVisual.cs" />
+    <Compile Include="Assets\Third Party\GoogleVR\Scripts\Audio\GvrAudio.cs" />
+    <Compile Include="Assets\Third Party\GoogleVR\Scripts\Audio\GvrAudioListener.cs" />
+    <Compile Include="Assets\Third Party\GoogleVR\Scripts\Audio\GvrAudioRoom.cs" />
+    <Compile Include="Assets\Third Party\GoogleVR\Scripts\Audio\GvrAudioSoundfield.cs" />
+    <Compile Include="Assets\Third Party\GoogleVR\Scripts\Audio\GvrAudioSource.cs" />
+    <Compile Include="Assets\Third Party\GoogleVR\Scripts\Controller\GvrArmModel.cs" />
+    <Compile Include="Assets\Third Party\GoogleVR\Scripts\Controller\GvrArmModelOffsets.cs" />
+    <Compile Include="Assets\Third Party\GoogleVR\Scripts\Controller\GvrBatteryIndicator.cs" />
+    <Compile Include="Assets\Third Party\GoogleVR\Scripts\Controller\GvrController.cs" />
     <Compile Include="Assets\Third Party\GoogleVR\Scripts\Controller\GvrControllerVisual.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Scripts\Controller\GvrLaserPointer.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Scripts\Controller\GvrLaserVisual.cs" />
+    <Compile Include="Assets\Third Party\GoogleVR\Scripts\Controller\GvrControllerVisualManager.cs" />
+    <Compile Include="Assets\Third Party\GoogleVR\Scripts\Controller\GvrPointerManager.cs" />
     <Compile Include="Assets\Third Party\GoogleVR\Scripts\Controller\GvrRecenterOnlyController.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Scripts\Controller\GvrTrackedController.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Scripts\Controller\IGvrControllerInputDeviceReceiver.cs" />
+    <Compile Include="Assets\Third Party\GoogleVR\Scripts\Controller\GvrTooltip.cs" />
     <Compile Include="Assets\Third Party\GoogleVR\Scripts\Controller\Internal\ControllerProviderFactory.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Scripts\Controller\Internal\ControllerProviders\AndroidNativeShimControllerProvider.cs" />
+    <Compile Include="Assets\Third Party\GoogleVR\Scripts\Controller\Internal\ControllerProviders\AndroidNativeControllerProvider.cs" />
     <Compile Include="Assets\Third Party\GoogleVR\Scripts\Controller\Internal\ControllerProviders\DummyControllerProvider.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Scripts\Controller\Internal\ControllerProviders\EditorControllerProvider.cs" />
     <Compile Include="Assets\Third Party\GoogleVR\Scripts\Controller\Internal\ControllerProviders\EmulatorControllerProvider.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Scripts\Controller\Internal\ControllerProviders\MouseControllerProvider.cs" />
     <Compile Include="Assets\Third Party\GoogleVR\Scripts\Controller\Internal\ControllerState.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Scripts\Controller\Internal\ControllerUtils.cs" />
     <Compile Include="Assets\Third Party\GoogleVR\Scripts\Controller\Internal\Emulator\EmulatorClientSocket.cs" />
     <Compile Include="Assets\Third Party\GoogleVR\Scripts\Controller\Internal\Emulator\EmulatorConfig.cs" />
     <Compile Include="Assets\Third Party\GoogleVR\Scripts\Controller\Internal\Emulator\EmulatorDataTypes.cs" />
     <Compile Include="Assets\Third Party\GoogleVR\Scripts\Controller\Internal\Emulator\EmulatorManager.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Scripts\Controller\Internal\Emulator\Generated\PhoneEvent.cs" />
+    <Compile Include="Assets\Third Party\GoogleVR\Scripts\Controller\Internal\Emulator\PhoneEvent.cs" />
     <Compile Include="Assets\Third Party\GoogleVR\Scripts\Controller\Internal\IControllerProvider.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Scripts\Controller\Tooltips\GvrControllerTooltipsSimple.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Scripts\Controller\Tooltips\GvrTooltip.cs" />
     <Compile Include="Assets\Third Party\GoogleVR\Scripts\EventSystem\GvrBasePointer.cs" />
     <Compile Include="Assets\Third Party\GoogleVR\Scripts\EventSystem\GvrBasePointerRaycaster.cs" />
+    <Compile Include="Assets\Third Party\GoogleVR\Scripts\EventSystem\GvrEventInterfacesExtension.cs" />
     <Compile Include="Assets\Third Party\GoogleVR\Scripts\EventSystem\GvrExecuteEventsExtension.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Scripts\EventSystem\GvrPointerEventData.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Scripts\EventSystem\GvrPointerEventDataExtension.cs" />
     <Compile Include="Assets\Third Party\GoogleVR\Scripts\EventSystem\GvrPointerGraphicRaycaster.cs" />
     <Compile Include="Assets\Third Party\GoogleVR\Scripts\EventSystem\GvrPointerPhysicsRaycaster.cs" />
     <Compile Include="Assets\Third Party\GoogleVR\Scripts\EventSystem\GvrPointerScrollInput.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Scripts\EventSystem\GvrScrollSettings.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Scripts\EventSystem\GvrXREventsSubscriber.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Scripts\EventSystem\IGvrPointerHoverHandler.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Scripts\EventSystem\IGvrScrollSettings.cs" />
     <Compile Include="Assets\Third Party\GoogleVR\Scripts\EventSystem\InputModule\GvrAllEventsTrigger.cs" />
     <Compile Include="Assets\Third Party\GoogleVR\Scripts\EventSystem\InputModule\GvrEventExecutor.cs" />
     <Compile Include="Assets\Third Party\GoogleVR\Scripts\EventSystem\InputModule\GvrPointerInputModule.cs" />
@@ -164,23 +168,6 @@
     <Compile Include="Assets\Third Party\GoogleVR\Scripts\GvrEditorEmulator.cs" />
     <Compile Include="Assets\Third Party\GoogleVR\Scripts\GvrSettings.cs" />
     <Compile Include="Assets\Third Party\GoogleVR\Scripts\GvrUnitySdkVersion.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Scripts\Headset\Enums\GvrErrorType.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Scripts\Headset\Enums\GvrEventType.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Scripts\Headset\Enums\GvrRecenterEventType.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Scripts\Headset\Enums\GvrRecenterFlags.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Scripts\Headset\Enums\GvrSafetyRegionType.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Scripts\Headset\GvrHeadset.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Scripts\Headset\Internal\HeadsetProviderFactory.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Scripts\Headset\Internal\HeadsetProviders\AndroidNativeHeadsetEnums.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Scripts\Headset\Internal\HeadsetProviders\AndroidNativeHeadsetProvider.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Scripts\Headset\Internal\HeadsetProviders\DummyHeadsetProvider.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Scripts\Headset\Internal\HeadsetProviders\EditorHeadsetProvider.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Scripts\Headset\Internal\HeadsetState.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Scripts\Headset\Internal\IHeadsetProvider.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Scripts\InstantPreview\InstantPreviewHelper.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Scripts\InstantPreview\Internal\InstantPreview.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Scripts\InstantPreview\Internal\InstantPreviewControllerProvider.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Scripts\Internal\EditorCameraOriginDict.cs" />
     <Compile Include="Assets\Third Party\GoogleVR\Scripts\Keyboard\GvrKeyboard.cs" />
     <Compile Include="Assets\Third Party\GoogleVR\Scripts\Keyboard\GvrKeyboardDelegateBase.cs" />
     <Compile Include="Assets\Third Party\GoogleVR\Scripts\Keyboard\GvrKeyboardIntent.cs" />
@@ -192,34 +179,38 @@
     <Compile Include="Assets\Third Party\GoogleVR\Scripts\Keyboard\Internal\KeyboardState.cs" />
     <Compile Include="Assets\Third Party\GoogleVR\Scripts\Permissions\GvrPermissionsRequester.cs" />
     <Compile Include="Assets\Third Party\GoogleVR\Scripts\Pose3D.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Scripts\PropertyDrawers\GvrInfo.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Scripts\PropertyDrawers\GvrInfoDrawer.cs" />
+    <Compile Include="Assets\Third Party\GoogleVR\Scripts\UI\GvrBaseControllerVisual.cs" />
     <Compile Include="Assets\Third Party\GoogleVR\Scripts\UI\GvrDropdown.cs" />
+    <Compile Include="Assets\Third Party\GoogleVR\Scripts\UI\GvrLaserPointer.cs" />
+    <Compile Include="Assets\Third Party\GoogleVR\Scripts\UI\GvrLaserPointerImpl.cs" />
+    <Compile Include="Assets\Third Party\GoogleVR\Scripts\UI\GvrReticlePointer.cs" />
+    <Compile Include="Assets\Third Party\GoogleVR\Scripts\UI\GvrReticlePointerImpl.cs" />
+    <Compile Include="Assets\Third Party\GoogleVR\Scripts\UI\GvrTouchPoint.cs" />
     <Compile Include="Assets\Third Party\GoogleVR\Scripts\Utilities\GvrActivityHelper.cs" />
     <Compile Include="Assets\Third Party\GoogleVR\Scripts\Utilities\GvrDaydreamApi.cs" />
+    <Compile Include="Assets\Third Party\GoogleVR\Scripts\Utilities\GvrFPS.cs" />
     <Compile Include="Assets\Third Party\GoogleVR\Scripts\Utilities\GvrIntent.cs" />
     <Compile Include="Assets\Third Party\GoogleVR\Scripts\Utilities\GvrMathHelpers.cs" />
     <Compile Include="Assets\Third Party\GoogleVR\Scripts\Utilities\GvrUIHelpers.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Scripts\Utilities\GvrVRHelpers.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Scripts\Utilities\Internal\GvrCursorHelper.cs" />
-    <Compile Include="Assets\Third Party\GoogleVR\Scripts\Utilities\Internal\SuppressMemoryAllocationErrorAttribute.cs" />
     <Compile Include="Assets\Third Party\GoogleVR\Scripts\Video\GvrVideoPlayerTexture.cs" />
+    <Compile Include="Assets\Third Party\MongoDB\HelloMongo.cs" />
+    <None Include="Assets\Third Party\GoogleVR\Distortion\GvrDistortion.cginc" />
+    <None Include="Assets\Third Party\GoogleVR\Demos\Shaders\VideoDemo\VideoDemoInsideShader.shader" />
     <None Include="Assets\Third Party\GoogleVR\Shaders\GvrUIOverlayFont.shader" />
     <None Include="Assets\Third Party\GoogleVR\Shaders\GvrAdditiveOverlay.shader" />
-    <None Include="Assets\Third Party\GoogleVR\Shaders\GvrController.shader" />
+    <None Include="Assets\Third Party\GoogleVR\Demos\Environment\DemoEnvUnlitGrayscale.shader" />
     <None Include="Assets\Third Party\GoogleVR\Shaders\GvrUnlitTransparentOverlay.shader" />
-    <None Include="Assets\Third Party\GoogleVR\Beta\Shaders\GvrSeeThroughUI.shader" />
     <None Include="Assets\Third Party\GoogleVR\Shaders\GvrUnlitTransparentOverlayColor.shader" />
-    <None Include="Assets\Third Party\GoogleVR\Plugins\Android\AndroidManifest-6DOF.xml" />
-    <None Include="Assets\Third Party\GoogleVR\Shaders\Video\VideoUnlitShader.shader" />
+    <None Include="Assets\Third Party\GoogleVR\Demos\Shaders\GVRDemo\GVRDemoAmbientOcclusion.shader" />
     <None Include="Assets\Third Party\GoogleVR\Shaders\GvrUnlitTextureOverlay.shader" />
-    <None Include="Assets\Third Party\GoogleVR\Shaders\GvrControllerReticle.shader" />
+    <None Include="Assets\Third Party\GoogleVR\Plugins\Android\proguard-gvr.txt" />
     <None Include="Assets\Third Party\GoogleVR\Plugins\Android\AndroidManifest-Daydream.xml" />
-    <None Include="Assets\Third Party\GoogleVR\Demos\Shaders\HelloVR\HelloVRUnlitGrayscaleToColor.shader" />
+    <None Include="Assets\Third Party\GoogleVR\Demos\Shaders\GVRDemo\GVRDemoUnlitGrayscaleToColor.shader" />
     <None Include="Assets\Third Party\GoogleVR\Shaders\GvrReticleShader.shader" />
     <None Include="Assets\Third Party\GoogleVR\Shaders\GvrUIOverlay.shader" />
-    <None Include="Assets\Third Party\GoogleVR\Plugins\Android\proguard-gvr.txt" />
     <None Include="Assets\Third Party\GoogleVR\Plugins\Android\AndroidManifest-Cardboard.xml" />
+    <None Include="Assets\Third Party\GoogleVR\Shaders\GvrUnityCompatibility.cginc" />
+    <None Include="Assets\Third Party\GoogleVR\Demos\Shaders\VideoDemo\VideoDemoStereoShader.shader" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>D:/Work/MEng Computer Science/4th year/COMP0138 Individual Project for Year 4 MEng/Project-BlackHole/BlackHole/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
@@ -433,6 +424,9 @@
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.3.7f1/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
+    <Reference Include="Google.ProtocolBuffers">
+      <HintPath>D:/Work/MEng Computer Science/4th year/COMP0138 Individual Project for Year 4 MEng/Project-BlackHole/BlackHole/Assets/Third Party/GoogleVR/Plugins/Google.ProtocolBuffers.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Analytics.Editor">
       <HintPath>D:/Work/MEng Computer Science/4th year/COMP0138 Individual Project for Year 4 MEng/Project-BlackHole/BlackHole/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
@@ -442,8 +436,11 @@
     <Reference Include="Unity.Analytics.Tracker">
       <HintPath>D:/Work/MEng Computer Science/4th year/COMP0138 Individual Project for Year 4 MEng/Project-BlackHole/BlackHole/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
     </Reference>
-    <Reference Include="Google.ProtocolBuffers">
-      <HintPath>D:/Work/MEng Computer Science/4th year/COMP0138 Individual Project for Year 4 MEng/Project-BlackHole/BlackHole/Assets/Third Party/GoogleVR/Plugins/Google.ProtocolBuffers.dll</HintPath>
+    <Reference Include="MongoDB.Driver">
+      <HintPath>D:/Work/MEng Computer Science/4th year/COMP0138 Individual Project for Year 4 MEng/Project-BlackHole/BlackHole/Assets/Third Party/MongoDB/Plugins/MongoDB.Driver.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Bson">
+      <HintPath>D:/Work/MEng Computer Science/4th year/COMP0138 Individual Project for Year 4 MEng/Project-BlackHole/BlackHole/Assets/Third Party/MongoDB/Plugins/MongoDB.Bson.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.3.7f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>

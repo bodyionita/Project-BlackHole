@@ -4,17 +4,39 @@ using UnityEngine;
 
 public class PlanetController : MonoBehaviour
 {
-    public Planet planet = new Planet(new Color(50, 50, 255));
-    public ActiveController status = new ActiveController();
+    [SerializeField]
+    private Planet planet = new Planet(new Color(100, 100, 100));
+    [SerializeField]
+    private int index = -1;
+
+    // Motion controllers
+    private ActiveController status = new ActiveController();
+    private ActiveController previous_status = new ActiveController();
 
     // Components needed
-    public Transform orbitCentre;
-    public Transform planetCentre;
-    public Material planetMaterial;
+    [SerializeField]
+    private Transform orbitCentre;
+    [SerializeField]
+    private Transform planetCentre;
+    [SerializeField]
+    private Material planetMaterial;
 
     // Event to wait for component gathering
-    public delegate void ComponentsGatheredHandler(PlanetController pc);
+    public delegate int ComponentsGatheredHandler(PlanetController pc);
     public static event ComponentsGatheredHandler OnComponentsGathered;
+
+    public void UpdatePlanet(Planet p)
+    {
+        // Deactivate planet in order to make changes
+        Hold();
+
+        // Update planets parametres and visualisation
+        planet = p;
+        UpdateVisualisation();
+
+        // Return planets status to the previous state
+        Resume();
+    }
 
     private void UpdateVisualisation()
     {
@@ -31,36 +53,52 @@ public class PlanetController : MonoBehaviour
 
         // Update color
         planetMaterial.color = planet.color;
-
-        //Update speed
-        planet.OnPeriodChanged();
-    }
-
-    public void UpdatePlanet(Planet p)
-    {   
-        planet = p;
-        UpdateVisualisation();
-    }
-
+    }    
     
+    private void Hold()
+    {
+        if (status.isActive) previous_status.Activate();
+        status.Deactivate();
+    }
+
+    private void Resume()
+    {
+        if (previous_status.isActive) status.Activate();
+    }
+
+    private void ChangeState(bool new_status, int i=-1)
+    {
+        if (index == i || i == -1)
+        {
+            if (new_status) status.Activate();
+            else status.Deactivate();
+        }
+    }
+
     private void GatherComponents()
     {
         orbitCentre = GetComponent<Transform>();
         planetCentre = orbitCentre.GetChild(0).GetComponent<Transform>();
         planetMaterial = GetComponentInChildren<Renderer>().material;
-        if (OnComponentsGathered != null)  OnComponentsGathered(this);
+        if (OnComponentsGathered != null)  index = OnComponentsGathered(this);
     }
 
     private void OnEnable()
     {
+        PlanetsManager.OnStatusCommand += ChangeState;
         GatherComponents();
     }
-    
+
+    private void OnDisable()
+    {
+        PlanetsManager.OnStatusCommand -= ChangeState;
+    }
+
     private void Update()
     {
-        if (status.IsActive)
+        if (status.isActive)
         {
-            orbitCentre.Rotate(0, planet.OrbitSpeed * Time.deltaTime, 0);
+            orbitCentre.Rotate(0, planet.orbitSpeed * Time.deltaTime, 0);
         }
     }
 
