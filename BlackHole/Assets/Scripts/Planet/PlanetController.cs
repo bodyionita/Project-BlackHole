@@ -53,6 +53,13 @@ public class PlanetController : MonoBehaviour
 
         // Update color
         planetMaterial.color = planet.color;
+
+        // Update trail
+        var trail = planetCentre.GetComponent<TrailRenderer>();
+        trail.widthMultiplier = planet.size * 10 / planet.orbitPeriod;
+        trail.time = planet.size / planet.orbitSpeed * 4;
+        trail.minVertexDistance = planet.size * 0.2f;
+        trail.material = planetMaterial;
     }    
     
     private void Hold()

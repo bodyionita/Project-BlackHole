@@ -28,6 +28,10 @@ public class SimSessionManager : MonoBehaviour
         {
             // SimManager.StartSim();
         }
+        if (s.name == "loading")
+        {
+
+        }
     }
 
     void HandleSimEnd(bool simCompleted)

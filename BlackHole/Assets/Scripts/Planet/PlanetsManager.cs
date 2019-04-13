@@ -9,7 +9,13 @@ public class PlanetsManager : MonoBehaviour
     private int loadedPlanets
     {
         get { return _loadedPlanets; }
-        set { _loadedPlanets = value; if (_loadedPlanets == totalPlanets) OnPlanetsLoaded(); }
+        set
+        {
+            _loadedPlanets = value;
+            if (_loadedPlanets == totalPlanets)
+                if (OnPlanetsLoaded != null) OnPlanetsLoaded();
+            Debug.Log(IndexToControllerMap);
+        }
     }
 
     // Planet container
@@ -65,8 +71,8 @@ public class PlanetsManager : MonoBehaviour
 
     private int PlanetLoaded(PlanetController pc)
     {
+        IndexToControllerMap[loadedPlanets+1] = pc;
         loadedPlanets += 1;
-        IndexToControllerMap[loadedPlanets] = pc;
         return loadedPlanets;
     }
 

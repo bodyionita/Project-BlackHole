@@ -14,5 +14,6 @@ public static class SceneLoader
 public enum SceneName
 {
     MainMenu,
+    LoadingScreen,
     Simulation
 }

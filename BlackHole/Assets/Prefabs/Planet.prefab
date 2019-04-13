@@ -48,8 +48,8 @@ MonoBehaviour:
     size: 1
     color: {r: 50, g: 50, b: 255, a: 1}
     orbitRadius: 5
-    trailLength: 0
     orbitAngle: 0
+  index: -1
   orbitCentre: {fileID: 7986713636027825910}
   planetCentre: {fileID: 7986713636676277057}
   planetMaterial: {fileID: 2100000, guid: d5cea56f188e52a48aa18d6e44be983e, type: 2}
@@ -165,11 +165,11 @@ TrailRenderer:
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
+  m_LightmapParameters: {fileID: 15203, guid: 0000000000000000f000000000000000, type: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.1
+  m_Time: 0.7
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -178,16 +178,16 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.8354454
-        inSlope: -4.7848315
-        outSlope: -4.7848315
+        value: 0.32583004
+        inSlope: -0.7743729
+        outSlope: -0.7743729
         tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
-        outWeight: 0.19835488
+        outWeight: 0.7527439
       - serializedVersion: 3
-        time: 0.38339245
-        value: 0.24051222
+        time: 0.3027436
+        value: 0.14435309
         inSlope: -0.25618774
         outSlope: -0.25618774
         tangentMode: 0
@@ -208,9 +208,9 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 0.08018869, b: 0.08018869, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 0}
-      key2: {r: 0, g: 0, b: 0, a: 0}
+      key0: {r: 1, g: 0, b: 0, a: 1}
+      key1: {r: 1, g: 0, b: 0, a: 0}
+      key2: {r: 1, g: 1, b: 1, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
@@ -218,7 +218,7 @@ TrailRenderer:
       key7: {r: 0, g: 0, b: 0, a: 0}
       ctime0: 0
       ctime1: 65535
-      ctime2: 0
+      ctime2: 65535
       ctime3: 0
       ctime4: 0
       ctime5: 0
@@ -241,6 +241,6 @@ TrailRenderer:
     textureMode: 0
     shadowBias: 0.5
     generateLightingData: 0
-  m_MinVertexDistance: 0.1
+  m_MinVertexDistance: 1
   m_Autodestruct: 0
   m_Emitting: 1
