@@ -10,7 +10,6 @@ public class PlanetFactory : MonoBehaviour
     {
         GameObject instance = Instantiate(planetPrefab, container) as GameObject;
         instance.transform.position = new Vector3(0, 0, 0);
-        Debug.Log("Factory has instantiated: " + instance + " positioned at: " + instance.transform.position);
         return instance;
     }
 

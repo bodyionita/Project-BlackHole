@@ -10,6 +10,7 @@ ef0f4526846337a85e69fe63f123febb Assembly-CSharp.dll:.DataStreamer
 984dcc0ba3707b7691fbdca8ff508d28 Unity.TextMeshPro.dll:TMPro.TMP_SelectionCaret
 23efcd1831b04ace52b7b3485f150f24 Assembly-CSharp.dll:.GvrDropdown
 01aa15e337e3a9c62f15153dfac6d589 Unity.TextMeshPro.dll:TMPro.TMP_Dropdown
+71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.LoadingScreenUI
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
 06f0fef534ca4c1d6064fd77a26bf722 UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationTrack
 780e8f682b3221346c034a6712a0fd25 UnityEngine.Timeline.dll:UnityEngine.Timeline.AnimationPlayableAsset
@@ -23,6 +24,7 @@ e1bbf0ab858085e38fae6b12ebbdcd35 UnityEngine.Timeline.dll:UnityEngine.Timeline.G
 e1bbf0ab858085e38fae6b12ebbdcd35 UnityEngine.Timeline.dll:UnityEngine.Timeline.PlayableTrack
 201e3fde670b00545944bb3db215c80a UnityEngine.Timeline.dll:UnityEngine.Timeline.TimelineAsset
 965947353726ec173bef4b6d8f0ca96b Assembly-CSharp.dll:.CardboardControlReticle
+5bddb32bcb848f51c6efb9a0b86ba855 Assembly-CSharp.dll:.simplerotate
 1d2661242aa02c544d8cab89d6f668f9 Assembly-CSharp.dll:.MainMenuUI
 74955bcf4d02520f7f19194deaba2e0a Assembly-CSharp.dll:.PagedScrollBar
 e7a73f5f78ba6445195ec23b74a1ce2d Unity.TextMeshPro.dll:TMPro.TMP_ScrollbarEventHandler
@@ -98,12 +100,14 @@ fc108ce7d98c40ac0907e8ca7f500c76 UnityEngine.UI.dll:UnityEngine.UI.Text
 0fd6822f6177297bd0eb4d83cc7a9030 UnityEngine.UI.dll:UnityEngine.UI.ToggleGroup
 abf1930d8126d0b2e00e9449129a0190 UnityEngine.UI.dll:UnityEngine.EventSystems.TouchInputModule
 64e54c0cbb0177c5ea26f340efb9ff85 UnityEngine.UI.dll:UnityEngine.UI.VerticalLayoutGroup
+71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.HelloMongo
 3e2ea8c644ad0dfcb6573611166f4305 Assembly-CSharp.dll:.TranslateScrollEffect
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.DataTranslator
 23cb26d8f0c9063c022f5edda89aaebb Assembly-CSharp.dll:.GvrArmModel
 444398bc4fb783b0b448ac3c979214e1 Assembly-CSharp.dll:.GvrAudioRoom
 1bb6b7c659ac722a4b1d683587b8475b Assembly-CSharp.dll:.DemoInputManager
 2cd35ebae3db4154d9fd79871066abfa Assembly-CSharp.dll:.GvrEditorEmulator
+afc5b93a7b192de2dcb3832fe35a5c7e Assembly-CSharp.dll:.loadingbar
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
 06f0fef534ca4c1d6064fd77a26bf722 UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationTrack
 780e8f682b3221346c034a6712a0fd25 UnityEngine.Timeline.dll:UnityEngine.Timeline.AnimationPlayableAsset
@@ -137,8 +141,10 @@ ad9173d3a69d99153f38ed4b62226129 UnityEngine.Networking.dll:UnityEngine.Networki
 d251bf88db6c95a6b1aa0b69298da9ef UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
 ed916f285d5522ec5ceb6eccef8d0072 Assembly-CSharp.dll:.SwitchVideos
 11182ae33aeebaa701c6f03cb7f19976 Assembly-CSharp.dll:.GvrKeyboard
+5bddb32bcb848f51c6efb9a0b86ba855 Assembly-CSharp.dll:.rotatetotate
 7ff3462e7290ae2fc5268c84dc271629 Assembly-CSharp.dll:.PlanetsManager
 94a70dea2f064d93a5ee29f65f86ea4e Assembly-CSharp.dll:.JumpToPage
+abb74232924aeae3cb0affcdf05292df Assembly-CSharp.dll:.Loading
 ddd530020059d8ea01207ef734215f61 Assembly-CSharp.dll:.GvrAudioSoundfield
 b0cfea4cc2caca7d1dcc63d48b6d719d Assembly-CSharp.dll:GVR.Events.ToggleAction
 303ad70ce203ad874efe2965d0fbcff9 Unity.Analytics.Tracker.dll:UnityEngine.Analytics.AnalyticsEventTracker
@@ -158,6 +164,7 @@ be72d94eafe1b69615c4f73957582e1c Assembly-CSharp.dll:.ChildrenPageProvider
 5e022063bf6820b26649914ad310f440 Assembly-CSharp.dll:.MovingCharacterController
 71bb6a6b6c8f052f948db64c7dd3ca4f Unity.TextMeshPro.dll:TMPro.TMP_SpriteAnimator
 a35bfea20a415b827dc917991e0699d4 Assembly-CSharp.dll:.GvrBatteryIndicator
+f5d319c701455c73daf9ccb504fccd34 Assembly-CSharp.dll:.loadingtext
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.DataStorage
 5631d73bca1394b393b5041470dcd5d5 Assembly-CSharp.dll:.CardboardControlGaze
 920f9a7dfd41a927d287afe347601659 Assembly-CSharp.dll:.GvrLaserPointer
@@ -226,6 +233,7 @@ df64ad7cdad89053ed97218d03e92c1f Assembly-CSharp.dll:Gvr.Internal.EmulatorConfig
 611d83895293a48a9ac45b6332288b77 Assembly-CSharp.dll:.GvrAudioSource
 c6666661329916e218bee7f5e79e60f5 Unity.TextMeshPro.dll:TMPro.TextMeshPro
 3165968ba45c74472d279ba04455fccb Unity.TextMeshPro.dll:TMPro.TMP_ColorGradient
+afc5b93a7b192de2dcb3832fe35a5c7e Assembly-CSharp.dll:.loadingcolorful
 72092c39978919a0496eacbc53f74227 Assembly-CSharp.dll:.UIFadeTransition
 f0077b931a26a7eeaf5e245c7ef51ec4 Assembly-CSharp.dll:.GvrPointerInputModule
 7a6837fe2e1bc65ba24bcd2a74cc367f Assembly-CSharp.dll:.GvrController
@@ -233,17 +241,9 @@ f0077b931a26a7eeaf5e245c7ef51ec4 Assembly-CSharp.dll:.GvrPointerInputModule
 8649814970b42d345b89944b862453cc Unity.TextMeshPro.dll:TMPro.TMP_SubMesh
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.GameObjectPoolController
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:Gvr.Internal.EmulatorClientSocket
+71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.DataManager
+5bddb32bcb848f51c6efb9a0b86ba855 Assembly-CSharp.dll:.SimpleLoading
 3e2359b47f1dd7cc80d0201335459c5a Assembly-CSharp.dll:.GVRDemoManager
 f262e241baac1c4184aa4ed5ad258734 Assembly-CSharp.dll:.Tab
 719e5a8f63dda20dad1ba86875c22268 Assembly-CSharp.dll:GVRSample.AutoPlayVideo
-71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.HelloMongo
-71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.DataManager
 5b8a6021db6c850fe5b2aac75670affe Assembly-CSharp.dll:.LoadingScreenPrototype
-afc5b93a7b192de2dcb3832fe35a5c7e Assembly-CSharp.dll:.loadingcolorful
-f5d319c701455c73daf9ccb504fccd34 Assembly-CSharp.dll:.loadingtext
-5bddb32bcb848f51c6efb9a0b86ba855 Assembly-CSharp.dll:.simplerotate
-afc5b93a7b192de2dcb3832fe35a5c7e Assembly-CSharp.dll:.loadingbar
-5bddb32bcb848f51c6efb9a0b86ba855 Assembly-CSharp.dll:.rotatetotate
-abb74232924aeae3cb0affcdf05292df Assembly-CSharp.dll:.Loading
-5bddb32bcb848f51c6efb9a0b86ba855 Assembly-CSharp.dll:.SimpleLoading
-71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.LoadingScreenUI

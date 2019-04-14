@@ -14,7 +14,6 @@ public class PlanetsManager : MonoBehaviour
             _loadedPlanets = value;
             if (_loadedPlanets == totalPlanets)
                 if (OnPlanetsLoaded != null) OnPlanetsLoaded();
-            Debug.Log(IndexToControllerMap);
         }
     }
 
