@@ -1,46 +1,40 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 using MongoDB.Bson;
+
 public class DataStreamer : MonoBehaviour
 {
-    private static DbConnection dbConnection;
-    public DataStorage dataStorage;
+    public DateTime startDate { get; private set; }
+    public DateTime endDate { get; private set; }
 
-    // Event to announce the stream request has completed
-    public delegate void StreamRequestFinished();
-    public static event StreamRequestFinished OnStreamRequestFinished;
+    private StreamRequest stream;
 
-    void Awake()
+    // Event to announce streaming has finished
+    public delegate void StreamFinishedHandler();
+    public static event StreamFinishedHandler OnStreamFinishedHandler;
+
+    private IEnumerator Streamer()
     {
-        dbConnection = new DbConnection(@"mongodb://project-blackhole:4X8OeAasgEu20h6rV86JLFeXKZ7ApSq8UoZVE9kPChXCg6sR705luvze7EIZsf0wsFJq9z8AEOhZxRjnFN2oOA==@project-blackhole.documents.azure.com:10255/?ssl=true&replicaSet=globaldb");
-    }
-
-    void Start()
-    {
-        dataStorage = transform.parent.GetComponentInChildren<DataStorage>();
-    }
-
-    public void StreamRequest(StreamRequestType srt, BsonDateTime date = null)
-    {
-        if (srt == StreamRequestType.DetailsRequest)
+        for (var date = startDate; date <= endDate; date = date.AddDays(1))
         {
-            var symbols_data = dbConnection.GetAll();
-            dataStorage.AddStatic(symbols_data);
+            stream.Request(StreamRequestType.SliceRequest, new BsonDateTime(date));
+            yield return new WaitForSeconds(0.5f);
+            //Debug.Log("Data gathered for: " + date);
         }
-        else if (srt == StreamRequestType.SliceRequest)
-        {
-            var slice_data = dbConnection.GetSlice(date);
-            dataStorage.AddSlice(slice_data, date);
-        }
-
-        if (OnStreamRequestFinished != null) OnStreamRequestFinished();
+        yield return new WaitForSeconds(2f);
+        OnStreamFinishedHandler();
     }
-}
 
-public enum StreamRequestType
-{
-    DetailsRequest,
-    SliceRequest
+    public void SetupStreamer(BsonDocument dateRange)
+    {
+        stream = gameObject.GetComponent<StreamRequest>();
+
+        startDate = dateRange["startDate"].ToUniversalTime();
+        endDate = dateRange["endDate"].ToUniversalTime();
+
+        StartCoroutine("Streamer");
+    }
 }

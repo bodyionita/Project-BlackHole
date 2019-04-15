@@ -1,15 +1,18 @@
 ﻿using System.Collections.Generic;
 using System.Security.Authentication;
+using System.Threading.Tasks;
 
 using MongoDB.Bson;
 using MongoDB.Driver;
+using MongoDB.Driver.Core;
 
+using UnityEngine;
 
 public class DbConnection
 {
-    private string connectionString;
-    private MongoCollection<BsonDocument> staticCollection;
-    private MongoCollection<BsonDocument> dynamicCollection;
+    private readonly string connectionString;
+    private IMongoCollection<BsonDocument> staticCollection;
+    private IMongoCollection<BsonDocument> dynamicCollection;
 
     public DbConnection(string connString)
     {
@@ -18,32 +21,25 @@ public class DbConnection
         MongoClientSettings settings = MongoClientSettings.FromUrl( new MongoUrl(connectionString) );
         settings.SslSettings = new SslSettings() { EnabledSslProtocols = SslProtocols.Tls12 };
 
-        var client = new MongoClient(settings);
-        var database = client.GetServer().GetDatabase("blackhole_data");
+        var client = new MongoClient(settings); 
+        var database = client.GetDatabase("blackhole_data");
 
-        staticCollection = database.GetCollection("symbols_details");
-        dynamicCollection = database.GetCollection("symbols_data");
+        staticCollection = database.GetCollection<BsonDocument>("symbols_details");
+        dynamicCollection = database.GetCollection<BsonDocument>("symbols_data");
     }
 
-    public BsonDocument GetSlice(BsonDateTime date)
+    public async Task<BsonDocument> GetSlice(BsonDateTime date)
     {
-        var query = dynamicCollection.Find(new QueryDocument("date", date));
-        var result = new BsonDocument();
-        foreach (var doc in query)
-        {
-            result = doc;
-        }
-        return result;
+        var query = new BsonDocument { { "date", date } };
+        var it = await dynamicCollection.FindSync(query).ToListAsync();       
+        return it[0];
     }
 
-    public BsonArray GetAll()
+    public async Task<BsonArray> GetAll()
     {
         var result = new BsonArray();
-
-        foreach (var doc in staticCollection.FindAll())
-        {
-            result.Add(doc);
-        }
+        await staticCollection.Find(FilterDefinition<BsonDocument>.Empty)
+            .ForEachAsync(doc => result.Add(doc));
         return result;
     }
 

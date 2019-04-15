@@ -3,12 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using MongoDB.Bson;
+
 public class DataManager : MonoBehaviour
 {
     public static DataManager ins;
 
     private DataStreamer dataStreamer;
     private DataStorage dataStorage;
+
+    public BsonDocument dateRange { get; private set; }
 
     private void Awake()
     {
@@ -21,6 +25,7 @@ public class DataManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        StreamRequest.OnStreamRequestFinished += StreamRequestFinished;
     }
 
     private void Start()
@@ -28,23 +33,34 @@ public class DataManager : MonoBehaviour
         dataStreamer = transform.GetComponentInChildren<DataStreamer>();
         dataStorage = transform.GetComponentInChildren<DataStorage>();
 
-        dataStreamer.StreamRequest(StreamRequestType.DetailsRequest);
+        var dataStreamRequest = transform.GetComponentInChildren<StreamRequest>();
+        dataStreamRequest.Request(StreamRequestType.DetailsRequest);
     }
 
-    private void StreamRequestFinished()
+
+
+    private void StreamRequestFinished(StreamRequestType srt)
     {
-        Debug.Log("Stream ended");
+        if (srt == StreamRequestType.DetailsRequest)
+        {
+            Debug.Log("Streaming of symbols details ended");
+        }
     }
 
-    private void StaticDataStored()
+    public void SetupStreaming(int lYear, int rYear)
     {
-        Debug.Log("Static Data Stored");
-    }
+        BsonDateTime startDate = new BsonDateTime(new System.DateTime(lYear, 1, 15));
+        BsonDateTime endDate = new BsonDateTime(new System.DateTime(rYear, 1, 14));
 
-    private void OnEnable()
-    {
-        DataStreamer.OnStreamRequestFinished += StreamRequestFinished;
-        DataStorage.OnStaticDataStored += StaticDataStored;
+        dateRange = new BsonDocument
+            {
+                { "startDate", startDate },
+                { "endDate", endDate }
+            };
+
+        Debug.Log("To be simulated date range: " + dateRange);
+
+        dataStreamer.SetupStreamer(dateRange);
     }
 
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,7 +8,7 @@ public class DataStorage : MonoBehaviour
 {
     private BsonDocument storage;
     public BsonArray symbolNames { get; private set; }
-    public BsonDocument dateRange { get; private set; }
+    public BsonArray datesStored { get; private set; }
 
     // Event to announce when the static data of all symbols has been stored
     public delegate void StaticDataStored();
@@ -29,30 +28,29 @@ public class DataStorage : MonoBehaviour
             };
 
         symbolNames = new BsonArray();
-
-        dateRange = new BsonDocument
-            {
-                {"startDate", new BsonDateTime(new DateTime(2014,1,15))},
-                {"endDate", new BsonDateTime(new DateTime(2019,1,14))}
-            };
+        datesStored = new BsonArray();
     }
 
-    public void AddStatic(BsonArray data)
+    public IEnumerator AddStatic(BsonArray data)
     {
         foreach (var symbol in data)
         {
             var name = symbol.AsBsonDocument["symbol"].AsString;
             symbolNames.Add(name);
 
-            storage["dynamic"].AsBsonDocument.Add(name, symbol.DeepClone());
-        }
+            storage["static"].AsBsonDocument.Add(name, symbol);
+            yield return new WaitForSeconds(0.2f);
 
+            storage["dynamic"].AsBsonDocument.Add(name, new BsonDocument());
+            yield return new WaitForSeconds(0.2f);
+        }
         if (OnStaticDataStored != null) OnStaticDataStored();
     }
 
-    public void AddSlice(BsonDocument data, BsonDateTime date)
+    public IEnumerator AddSlice(BsonDocument data, BsonDateTime date)
     {
         var symbols = data["symbols"].AsBsonArray;
+        var dateString = date.ToUniversalTime().ToShortDateString();
         foreach (var symbol in symbols)
         {
             var name = symbol.AsBsonDocument["name"].AsString;
@@ -60,12 +58,14 @@ public class DataStorage : MonoBehaviour
             if (has_data)
             {
                 var one_day_slice = symbol.AsBsonDocument["data"].AsBsonDocument;
-                storage["dynamic"].AsBsonDocument[name].AsBsonDocument.Add(date.AsString, data.DeepClone());
+                var symbol_data = storage["dynamic"].AsBsonDocument;
+
+                symbol_data[name].AsBsonDocument.Add(dateString, one_day_slice);
+                yield return new WaitForSeconds(0.5f);
             }
         }
-
+        datesStored.Add(date);
         if (OnDynamicDataStored != null) OnDynamicDataStored(date);
-
     }
 
     public BsonDocument GetSymbolStatic(string symbol)
@@ -78,9 +78,5 @@ public class DataStorage : MonoBehaviour
         return storage["dynamic"].AsBsonDocument[symbol].AsBsonDocument[date.AsString].AsBsonDocument;
     }
 
-    public IEnumerable<BsonDateTime> EachDay(BsonDateTime from, BsonDateTime thru)
-    {
-        for (var day = from.ToUniversalTime().Date; day.Date <= thru.ToUniversalTime().Date; day = day.AddDays(1))
-            yield return new BsonDateTime(day);
-    }
+    
 }

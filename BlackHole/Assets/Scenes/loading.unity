@@ -656,7 +656,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f440e4ffa32a948419a7c1856b409027, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfPlanets: 20
+  numberOfPlanets: 31
   planetsManager: {fileID: 825542719}
 --- !u!4 &1048360193
 Transform:
@@ -966,19 +966,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4972301184522692, guid: a1c09381fbe67cf4685715c7b75ad320, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: 0.68857914
       objectReference: {fileID: 0}
     - target: {fileID: 4972301184522692, guid: a1c09381fbe67cf4685715c7b75ad320, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4972301184522692, guid: a1c09381fbe67cf4685715c7b75ad320, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4972301184522692, guid: a1c09381fbe67cf4685715c7b75ad320, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7251612
       objectReference: {fileID: 0}
     - target: {fileID: 4972301184522692, guid: a1c09381fbe67cf4685715c7b75ad320, type: 3}
       propertyPath: m_RootOrder
@@ -986,7 +986,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4972301184522692, guid: a1c09381fbe67cf4685715c7b75ad320, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: 87.035
       objectReference: {fileID: 0}
     - target: {fileID: 4972301184522692, guid: a1c09381fbe67cf4685715c7b75ad320, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
