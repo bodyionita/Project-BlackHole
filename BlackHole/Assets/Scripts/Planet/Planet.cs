@@ -5,39 +5,60 @@ using UnityEngine;
 [System.Serializable]
 public class Planet 
 {
-    [Range(1f, 50f)]
-    public float size;
+    public const float sizeLow = 1f;
+    public const float sizeHigh = 50f;
 
-    public Color color;
+    public const float orbitRadiusLow = 5f;
+    public const float orbitRadiusHigh = 1000f;
+
+    public const float orbitPeriodLow = 5f;
+    public const float orbitPeriodHigh = 30f;
+
+    public const float orbitAngleLow = 0f;
+    public const float orbitAngleHigh = 45f;
+
+    [Range(sizeLow, sizeHigh), SerializeField]
+    private float _size;
+    public float size
+    {
+        get { return _size; }
+        set { _size = Mathf.Clamp(value, sizeLow, sizeHigh);  }
+    }
     
-    [Range(5f, 1000f)]
-    public float orbitRadius;
-    
-    [Range(5f, 30f)]
+    [Range(orbitRadiusLow, orbitRadiusHigh), SerializeField]
+    private float _orbitRadius;
+    public float orbitRadius
+    {
+        get { return _orbitRadius; }
+        set { _orbitRadius = Mathf.Clamp(value, orbitRadiusLow, orbitRadiusHigh); }
+    }
+
+    [Range(orbitPeriodLow, orbitPeriodHigh), SerializeField]
     private float _orbitPeriod;
     public float orbitPeriod
     {
         get { return _orbitPeriod; }
-        set { _orbitPeriod = value; OnPeriodChanged(); }
+        set { _orbitPeriod = Mathf.Clamp(value, orbitPeriodLow, orbitPeriodHigh); orbitSpeed = 360f / _orbitPeriod; }
     }
 
-    [Range(0f, 45f)]
-    public float orbitAngle;
-    public float orbitSpeed { get; private set; }
-
-
-    public Planet(Color _color, float _size=1f, float _orbitRadius=5f, float _orbitPeriod=5f, float _orbitAngle=0f)
+    [Range(orbitAngleLow, orbitAngleHigh), SerializeField]
+    private float _orbitAngle;
+    public float orbitAngle
     {
-        color = _color;
+        get { return _orbitAngle; }
+        set { _orbitAngle = Mathf.Clamp(value, orbitAngleLow, orbitAngleHigh); }
+    }
+
+    public float orbitSpeed { get; private set; }
+    public Color color;
+
+
+    public Planet(float _size=sizeLow, float _orbitRadius=orbitRadiusLow, float _orbitPeriod=orbitPeriodLow, float _orbitAngle=orbitAngleLow)
+    {
+        color = Color.blue;
         size = _size;
         orbitRadius = _orbitRadius;
         orbitPeriod = _orbitPeriod;
         orbitAngle = _orbitAngle;
     }
-
-    private void OnPeriodChanged()
-    {
-        orbitSpeed = 360f / orbitPeriod;
-    }
-
 }

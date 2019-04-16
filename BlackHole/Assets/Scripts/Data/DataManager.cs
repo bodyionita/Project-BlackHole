@@ -9,10 +9,11 @@ public class DataManager : MonoBehaviour
 {
     public static DataManager ins;
 
-    private DataStreamer dataStreamer;
-    private DataStorage dataStorage;
-
     public BsonDocument dateRange { get; private set; }
+
+    // Event to announce the streamer is stopped and reset
+    public delegate void StreamResetHandler();
+    public static event StreamResetHandler OnStreamReset;    
 
     private void Awake()
     {
@@ -25,26 +26,12 @@ public class DataManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        StreamRequest.OnStreamRequestFinished += StreamRequestFinished;
     }
 
     private void Start()
     {
-        dataStreamer = transform.GetComponentInChildren<DataStreamer>();
-        dataStorage = transform.GetComponentInChildren<DataStorage>();
-
         var dataStreamRequest = transform.GetComponentInChildren<StreamRequest>();
         dataStreamRequest.Request(StreamRequestType.DetailsRequest);
-    }
-
-
-
-    private void StreamRequestFinished(StreamRequestType srt)
-    {
-        if (srt == StreamRequestType.DetailsRequest)
-        {
-            Debug.Log("Streaming of symbols details ended");
-        }
     }
 
     public void SetupStreaming(int lYear, int rYear)
@@ -60,7 +47,21 @@ public class DataManager : MonoBehaviour
 
         Debug.Log("To be simulated date range: " + dateRange);
 
-        dataStreamer.SetupStreamer(dateRange);
+        DataStreamer.ins.SetupStreamer(dateRange);
     }
+
+    public void StartStreaming()
+    {
+        DataStreamer.ins.StartStreamer();
+    }
+
+    public void ResetStreaming()
+    {
+        DataStreamer.ins.StopAllCoroutines();
+
+        if (OnStreamReset != null) OnStreamReset();
+    }
+
+    
 
 }

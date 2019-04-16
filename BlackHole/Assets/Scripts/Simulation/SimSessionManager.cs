@@ -17,23 +17,44 @@ public class SimSessionManager : MonoBehaviour
         } else if (ins != this)
         {
             Destroy(gameObject);
+            return;
         }
+    }
+
+    private void OnEnable()
+    {
         SceneManager.sceneLoaded += OnSceneLoad;
+        MainMenuUI.OnStartPressed += StartPreparing;
+
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoad;
+        MainMenuUI.OnStartPressed -= StartPreparing;
+
+    }
+
+    private void StartPreparing(int lYear, int rYear)
+    {
+        DataManager.ins.SetupStreaming(lYear, rYear);
+
+        SceneLoader.LoadScene(SceneName.LoadingScreen);
     }
 
     void OnSceneLoad(Scene s, LoadSceneMode lsm)
     {
         if (s.name == "simulation")
         {
-            // SimManager.StartSim();
+            SimManager.ins.PrepareSimulation();
         }
         if (s.name == "loading")
         {
-               //
+            DataManager.ins.StartStreaming();
         }
         if (s.name == "mainmenu")
         {
-            // SimManager.Reset();
+            DataManager.ins.ResetStreaming();
         }
     }
 }

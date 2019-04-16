@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlanetController : MonoBehaviour
 {
     [SerializeField]
-    private Planet planet = new Planet(new Color(100, 100, 100));
+    private Planet planet = new Planet();
     [SerializeField]
     private int index = -1;
 
@@ -21,9 +21,13 @@ public class PlanetController : MonoBehaviour
     [SerializeField]
     private Material planetMaterial;
 
-    // Event to wait for component gathering
+    // Event to announce components have been gathered
     public delegate int ComponentsGatheredHandler(PlanetController pc);
     public static event ComponentsGatheredHandler OnComponentsGathered;
+
+    // Event to announce the planet data and visualisation was updated
+    public delegate void PlanetUpdatedHandler();
+    public static event PlanetUpdatedHandler OnPlanetUpdated;
 
     public void UpdatePlanet(Planet p)
     {
@@ -60,6 +64,8 @@ public class PlanetController : MonoBehaviour
         trail.time = planet.size / planet.orbitSpeed * 4;
         trail.minVertexDistance = planet.size * 0.2f;
         trail.material = planetMaterial;
+
+        if (OnPlanetUpdated != null) OnPlanetUpdated();
     }    
     
     private void Hold()

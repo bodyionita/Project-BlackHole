@@ -73,13 +73,13 @@
     <Compile Include="Assets\Third Party\GoogleVR\Editor\GvrEditorSettings.cs" />
     <Compile Include="Assets\Third Party\GoogleVR\Editor\GvrMenu.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>D:/Project-BlackHole/BlackHole/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>D:/Work/MEng Computer Science/4th year/COMP0138 Individual Project for Year 4 MEng/Project-BlackHole/BlackHole/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>D:/Project-BlackHole/BlackHole/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>D:/Work/MEng Computer Science/4th year/COMP0138 Individual Project for Year 4 MEng/Project-BlackHole/BlackHole/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>D:/Project-BlackHole/BlackHole/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>D:/Work/MEng Computer Science/4th year/COMP0138 Individual Project for Year 4 MEng/Project-BlackHole/BlackHole/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.3.7f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -319,22 +319,22 @@
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
     <Reference Include="DnsClient">
-      <HintPath>D:/Project-BlackHole/BlackHole/Assets/Third Party/DnsClient.dll</HintPath>
+      <HintPath>D:/Work/MEng Computer Science/4th year/COMP0138 Individual Project for Year 4 MEng/Project-BlackHole/BlackHole/Assets/Third Party/DnsClient.dll</HintPath>
     </Reference>
     <Reference Include="MongoDB.Bson">
-      <HintPath>D:/Project-BlackHole/BlackHole/Assets/Third Party/MongoDB.Bson.dll</HintPath>
+      <HintPath>D:/Work/MEng Computer Science/4th year/COMP0138 Individual Project for Year 4 MEng/Project-BlackHole/BlackHole/Assets/Third Party/MongoDB.Bson.dll</HintPath>
     </Reference>
     <Reference Include="MongoDB.Driver.Core">
-      <HintPath>D:/Project-BlackHole/BlackHole/Assets/Third Party/MongoDB.Driver.Core.dll</HintPath>
+      <HintPath>D:/Work/MEng Computer Science/4th year/COMP0138 Individual Project for Year 4 MEng/Project-BlackHole/BlackHole/Assets/Third Party/MongoDB.Driver.Core.dll</HintPath>
     </Reference>
     <Reference Include="MongoDB.Driver">
-      <HintPath>D:/Project-BlackHole/BlackHole/Assets/Third Party/MongoDB.Driver.dll</HintPath>
+      <HintPath>D:/Work/MEng Computer Science/4th year/COMP0138 Individual Project for Year 4 MEng/Project-BlackHole/BlackHole/Assets/Third Party/MongoDB.Driver.dll</HintPath>
     </Reference>
     <Reference Include="System.Buffers">
-      <HintPath>D:/Project-BlackHole/BlackHole/Assets/Third Party/System.Buffers.dll</HintPath>
+      <HintPath>D:/Work/MEng Computer Science/4th year/COMP0138 Individual Project for Year 4 MEng/Project-BlackHole/BlackHole/Assets/Third Party/System.Buffers.dll</HintPath>
     </Reference>
     <Reference Include="Google.ProtocolBuffers">
-      <HintPath>D:/Project-BlackHole/BlackHole/Assets/Third Party/GoogleVR/Plugins/Google.ProtocolBuffers.dll</HintPath>
+      <HintPath>D:/Work/MEng Computer Science/4th year/COMP0138 Individual Project for Year 4 MEng/Project-BlackHole/BlackHole/Assets/Third Party/GoogleVR/Plugins/Google.ProtocolBuffers.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.3.7f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>

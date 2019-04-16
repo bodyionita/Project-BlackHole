@@ -7,6 +7,8 @@ public class MainMenuUI : MonoBehaviour
 {
     public CardboardControl cardboard;
 
+    private bool streamerReset = false;
+
     // Event to announce start button was pressed
     public delegate void StartPressedHandler(int lYear, int rYear);
     public static event StartPressedHandler OnStartPressed;
@@ -14,12 +16,22 @@ public class MainMenuUI : MonoBehaviour
     private void OnEnable()
     {
         cardboard.trigger.OnDown += ClickPressed;
+        DataManager.OnStreamReset += StreamerReset;
+        
     }
 
     private void OnDisable()
     {
         cardboard.trigger.OnDown -= ClickPressed;
+        DataManager.OnStreamReset -= StreamerReset;
     }
+
+    private void StreamerReset()
+    {
+        streamerReset = true;
+    }
+
+  
 
     private void ClickPressed(object sender)
     {
@@ -30,7 +42,7 @@ public class MainMenuUI : MonoBehaviour
         Debug.Log("Clicked while gazing at: " + objectGazed);
 
         // Call game scene
-        if (name.Contains("Start"))
+        if (name.Contains("Start") && streamerReset)
         {
             StartPressed();
         }

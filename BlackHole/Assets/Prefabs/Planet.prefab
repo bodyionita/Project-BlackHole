@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7986713636027825910}
-  - component: {fileID: 7986713636027825905}
+  - component: {fileID: 7200647276100661095}
   m_Layer: 0
   m_Name: Planet
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7986713636027825905
+--- !u!114 &7200647276100661095
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -45,10 +45,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   planet:
-    size: 1
-    color: {r: 50, g: 50, b: 255, a: 1}
-    orbitRadius: 5
-    orbitAngle: 0
+    _size: 1
+    _orbitRadius: 5
+    _orbitPeriod: 5
+    _orbitAngle: 0
+    color: {r: 0, g: 0, b: 1, a: 1}
   index: -1
   orbitCentre: {fileID: 7986713636027825910}
   planetCentre: {fileID: 7986713636676277057}
