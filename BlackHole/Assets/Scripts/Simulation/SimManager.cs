@@ -14,6 +14,7 @@ public class SimManager : MonoBehaviour
 
 
     public ActiveController simulationUpdate = new ActiveController();
+    public bool pause = false;
 
     public DateTime startDate;
     public DateTime endDate;
@@ -26,8 +27,8 @@ public class SimManager : MonoBehaviour
         set { _currentSlice = value; SimulateNewSlice(); }
     }
 
-    [SerializeField, Range(1f, 5f)]
-    private float _secondsPerSlice = 3f;
+    [SerializeField, Range(1f, 10f)]
+    private float _secondsPerSlice = 1f;
     public float secondsPerSlice
     {
         get
@@ -36,23 +37,13 @@ public class SimManager : MonoBehaviour
         }
         set
         {
-            _secondsPerSlice = Mathf.Clamp(value, 1f, 5f);
+            _secondsPerSlice = Mathf.Clamp(value, 1f, 10f);
         }
     }
 
-    [SerializeField, Range(2, 10)]
-    private int _smoothingStepsPerSlice = 2;
-    public int smoothingStepsPerSlice
-    {
-        get
-        {
-            return _smoothingStepsPerSlice;
-        }
-        set
-        {
-            _smoothingStepsPerSlice = Mathf.Clamp(value, 2, 10);
-        }
-    }
+    [SerializeField, Range(2, 100)]
+    public static int smoothingStepsPerSlice = 100;
+    
 
     // Event to announce another one day slice of data is needed
     public delegate void SliceNeededHandler(BsonDateTime date);
@@ -63,7 +54,6 @@ public class SimManager : MonoBehaviour
         if (ins == null)
         {
             ins = this;
-            DontDestroyOnLoad(gameObject);
         }
         else if (ins != this)
         {
@@ -89,21 +79,22 @@ public class SimManager : MonoBehaviour
         startDate = DataManager.ins.dateRange["startDate"].ToUniversalTime();
         endDate = DataManager.ins.dateRange["endDate"].ToUniversalTime();
         currentDate = startDate;
-        pm.SpawnRequest(DataStorage.ins.numberOfStocks);
+        pm.SpawnRequest(DataStorage.ins.symbolNames.Count);
+        DataStreamer.ins.streamFrequency = 1f;
     }
 
     private void SimulateNewSlice()
     {
-        simulationUpdate.Activate();
-        pm.UpdatePlanets(DataTranslator.TranslateSlice(currentSlice));       
-
+        var data = DataTranslator.TranslateSlice(currentSlice);
+        //StartCoroutine(DataSmoothner.ins.SmoothUpdate(pm, data));
+        pm.UpdatePlanets(data);
+        if (pause == false)  simulationUpdate.Activate();
     }
 
     private void StartSimulation()
     {
         pm.SetPlanets(true);
-        if (simulationUpdate.isActive == false) simulationUpdate.Activate();
-        Debug.Log("Simulation coroutine start with status: " + simulationUpdate.isActive);
+        simulationUpdate.Activate();
         StartCoroutine(Simulate());
     }
 
@@ -111,28 +102,39 @@ public class SimManager : MonoBehaviour
     {
         while (currentDate <= endDate)
         {
-            Debug.Log(currentDate + " with simulationUpdate: " + simulationUpdate.isActive + " and date stored: " + DataStorage.ins.datesStored.Contains(new BsonDateTime(currentDate)));
-            if (simulationUpdate.isActive && DataStorage.ins.datesStored.Contains(new BsonDateTime(currentDate)))
+            if (simulationUpdate.isActive && !pause && DataStorage.ins.datesStored.Contains(new BsonDateTime(currentDate)))
             {
-                RequestSlice();
                 simulationUpdate.Deactivate();
+                RequestSlice();
             }
             yield return new WaitForSeconds(secondsPerSlice);
-        }        
+        }
     }
 
     private void RequestSlice()
     {
-        Debug.Log("Slice requested");
+        Debug.Log("Slice requested by SimManager for date: " + currentDate);
         if (OnSliceNeeded != null) OnSliceNeeded(currentDate);
     }
 
     private void SliceReceived(BsonDocument slice)
     {
         currentDate = currentDate.AddDays(1);
-        currentSlice = slice;
+        currentSlice = slice;   
     }
 
+    public void ToggleSimulation()
+    {
+        pm.SetPlanets(pause);
+        pause = !pause;
+    }
 
+    public void StopSimulation()
+    {
+        pm.SetPlanets(pause);
+        pause = true;
+        StopAllCoroutines();
+        SceneLoader.LoadScene(SceneName.MainMenu);
+    }
 
 }

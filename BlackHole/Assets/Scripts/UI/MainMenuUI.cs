@@ -17,7 +17,6 @@ public class MainMenuUI : MonoBehaviour
     {
         cardboard.trigger.OnDown += ClickPressed;
         DataManager.OnStreamReset += StreamerReset;
-        
     }
 
     private void OnDisable()

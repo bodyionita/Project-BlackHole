@@ -5,9 +5,9 @@ using UnityEngine;
 public class PlanetController : MonoBehaviour
 {
     [SerializeField]
-    private Planet planet = new Planet();
+    public Planet planet = new Planet();
     [SerializeField]
-    private int index = -1;
+    public int index = -1;
 
     // Motion controllers
     private ActiveController status = new ActiveController();
@@ -22,7 +22,7 @@ public class PlanetController : MonoBehaviour
     private Material planetMaterial;
 
     // Event to announce components have been gathered
-    public delegate int ComponentsGatheredHandler(PlanetController pc);
+    public delegate void ComponentsGatheredHandler(PlanetController pc);
     public static event ComponentsGatheredHandler OnComponentsGathered;
 
     // Event to announce the planet data and visualisation was updated
@@ -59,11 +59,12 @@ public class PlanetController : MonoBehaviour
         planetMaterial.color = planet.color;
 
         // Update trail
+        /*
         var trail = planetCentre.GetComponent<TrailRenderer>();
         trail.widthMultiplier = planet.size * 10 / planet.orbitPeriod;
         trail.time = planet.size / planet.orbitSpeed * 4;
         trail.minVertexDistance = planet.size * 0.2f;
-        trail.material = planetMaterial;
+        trail.material = planetMaterial;*/
 
         if (OnPlanetUpdated != null) OnPlanetUpdated();
     }    
@@ -93,7 +94,8 @@ public class PlanetController : MonoBehaviour
         orbitCentre = GetComponent<Transform>();
         planetCentre = orbitCentre.GetChild(0).GetComponent<Transform>();
         planetMaterial = GetComponentInChildren<Renderer>().material;
-        if (OnComponentsGathered != null)  index = OnComponentsGathered(this);
+        orbitCentre.Rotate(0, Random.value * 360, 0);
+        if (OnComponentsGathered != null)  OnComponentsGathered(this);
     }
 
     private void OnEnable()

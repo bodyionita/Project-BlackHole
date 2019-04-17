@@ -37,7 +37,7 @@ public class PlanetsManager : MonoBehaviour
     public static event PlanetsUpdatedHandler OnPlanetsUpdated;
 
     // Keep track of the planets controller by their assigned indexes
-    private Dictionary<int, PlanetController> IndexToControllerMap = new Dictionary<int, PlanetController>();    
+    public Dictionary<int, PlanetController> IndexToControllerMap = new Dictionary<int, PlanetController>();    
 
     public void UpdatePlanets(Dictionary<int, Planet> planets)
     {
@@ -55,7 +55,6 @@ public class PlanetsManager : MonoBehaviour
         totalPlanets = requested_number;
         for (int i = 1; i <= requested_number; i++)
             PlanetFactory.ins.SpawnPlanet(container);
-        if (OnPlanetsLoaded != null) OnPlanetsLoaded();
     }
 
     public void SetPlanets(bool active)
@@ -76,13 +75,14 @@ public class PlanetsManager : MonoBehaviour
 
     }
 
-    private int PlanetLoaded(PlanetController pc)
+    private void PlanetLoaded(PlanetController pc)
     {
         IndexToControllerMap[loadedPlanets+1] = pc;
         loadedPlanets += 1;
+        pc.index = loadedPlanets;
+
         if (loadedPlanets == totalPlanets)
             if (OnPlanetsLoaded != null) OnPlanetsLoaded();
-        return loadedPlanets;
     }
 
     private void PlanetUpdated()

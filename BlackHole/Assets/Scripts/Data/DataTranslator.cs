@@ -13,21 +13,34 @@ public static class DataTranslator
 
         foreach (var doc in slice)
         {
-            var pIndex = DataStorage.ins.symbolNames.IndexOf(doc.Name);
+            var pIndex = DataStorage.ins.symbolNames.IndexOf(doc.Name) + 1;
 
             Planet p = new Planet();
 
-            float changeLerp = Mathf.InverseLerp(DataStorage.ins.changeMin, DataStorage.ins.changeMax, (float)doc.Value.AsBsonDocument["change"].AsDouble);
-            float epsLerp = Mathf.InverseLerp(DataStorage.ins.epsMin, DataStorage.ins.epsMax, (float)doc.Value.AsBsonDocument["latestEPS"].AsDouble);
-            float peLerp = Mathf.InverseLerp(DataStorage.ins.peMin, DataStorage.ins.peMax, (float)doc.Value.AsBsonDocument["peRatioLow"].AsDouble);
-            float marketcapLerp = Mathf.InverseLerp(DataStorage.ins.marketcapMin, DataStorage.ins.marketcapMax, (float)doc.Value.AsBsonDocument["marketcap"].AsDouble);
+            if (doc.Value.AsBsonDocument["has_data"].AsBoolean)
+            {
+                float change = (float)doc.Value.AsBsonDocument["change"].ToDouble();
+                float eps = (float)doc.Value.AsBsonDocument["eps"].ToDouble();
+                float pe = (float)doc.Value.AsBsonDocument["pe"].ToDouble();
+                float volume = (float)doc.Value.AsBsonDocument["vtp"].ToDouble();
+                float marketcap = (float) (doc.Value.AsBsonDocument["marketcap"].ToDouble() / DataStorage.marketcapDiv);
 
-            p.color = new Color(Mathf.Lerp(0, 255, changeLerp), Mathf.Lerp(0, 255, 1 - changeLerp), 0);
-            p.size = Mathf.Lerp(Planet.sizeLow, Planet.sizeHigh, marketcapLerp);
-            p.orbitPeriod = Mathf.Lerp(Planet.orbitPeriodLow, Planet.orbitPeriodHigh, epsLerp);
-            p.orbitRadius = Mathf.Lerp(Planet.orbitRadiusLow, Planet.orbitRadiusHigh, peLerp);
+                float changeLerp = Mathf.InverseLerp(DataStorage.changeMin, DataStorage.changeMax, change);
+                float epsLerp = Mathf.InverseLerp(DataStorage.epsMin, DataStorage.epsMax, eps);
+                float peLerp = Mathf.InverseLerp(DataStorage.peMin, DataStorage.peMax, pe);
+                float volumeLerp = Mathf.InverseLerp(DataStorage.volumeMin, DataStorage.volumeMax, volume);
+                float marketcapLerp = Mathf.InverseLerp(DataStorage.marketcapMin, DataStorage.marketcapMax, marketcap );
 
-            planets.Add(pIndex, p);
+                p.color = Color.Lerp(Color.red, Color.green, changeLerp);
+                p.size = Mathf.Lerp(Planet.sizeLow, Planet.sizeHigh, marketcapLerp);
+                p.orbitPeriod = Mathf.Lerp(Planet.orbitPeriodHigh, Planet.orbitPeriodLow, volumeLerp);
+                p.orbitRadius = Mathf.Lerp(Planet.orbitRadiusLow, Planet.orbitRadiusHigh, peLerp);
+                p.orbitAngle = Mathf.Lerp(Planet.orbitAngleLow, Planet.orbitAngleHigh, epsLerp);
+
+                planets.Add(pIndex, p);
+            }           
+            
+            
         }
         return planets;
     }

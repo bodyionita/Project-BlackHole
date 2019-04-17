@@ -63,6 +63,7 @@
     <Compile Include="Assets\Scripts\ActiveController.cs" />
     <Compile Include="Assets\Scripts\Data\DataManager.cs" />
     <Compile Include="Assets\Scripts\Data\DataProvider.cs" />
+    <Compile Include="Assets\Scripts\Data\DataSmoothner.cs" />
     <Compile Include="Assets\Scripts\Data\DataStorage.cs" />
     <Compile Include="Assets\Scripts\Data\DataStreamer.cs" />
     <Compile Include="Assets\Scripts\Data\DataTranslator.cs" />

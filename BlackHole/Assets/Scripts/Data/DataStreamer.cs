@@ -12,6 +12,8 @@ public class DataStreamer : MonoBehaviour
     public DateTime startDate { get; private set; }
     public DateTime endDate { get; private set; }
 
+    public float streamFrequency = 0.1f;
+
     private StreamRequest stream;
 
     // Event to announce streaming has finished
@@ -36,7 +38,7 @@ public class DataStreamer : MonoBehaviour
         for (var date = startDate; date <= endDate; date = date.AddDays(1))
         {
             stream.Request(StreamRequestType.SliceRequest, new BsonDateTime(date));
-            yield return new WaitForSecondsRealtime(0.5f);
+            yield return new WaitForSecondsRealtime(streamFrequency);
             //Debug.Log("Data gathered for: " + date);
         }
         yield return new WaitForSecondsRealtime(2f);

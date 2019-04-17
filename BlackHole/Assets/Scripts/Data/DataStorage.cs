@@ -14,17 +14,27 @@ public class DataStorage : MonoBehaviour
     public BsonArray symbolNames { get; private set; }
     public BsonArray datesStored { get; private set; }
 
-    public long marketcapMin = 0;
-    public long marketcapMax = 21000000000000;
-
-    public float epsMin = -2f;
-    public float epsMax = 50f;
-
-    public float peMin = 0f;
-    public float peMax = 200f;
-
-    public float changeMin = -50f;
-    public float changeMax = 50f;
+    public static double marketcapDiv = Mathf.Pow(10, 6);
+    [HideInInspector]
+    public static float marketcapMin = (float)(Mathf.Pow(10, 8) / marketcapDiv);
+    [HideInInspector]
+    public static float marketcapMax = (float)(2 * Mathf.Pow(10, 12) / marketcapDiv);
+    [HideInInspector]
+    public static float epsMin = -2f;
+    [HideInInspector]
+    public static float epsMax = 10f;
+    [HideInInspector]
+    public static float peMin = -10f;
+    [HideInInspector]
+    public static float peMax = 40f;
+    [HideInInspector]
+    public static float volumeMin = 0f;
+    [HideInInspector]
+    public static float volumeMax = Mathf.Pow(10,5);
+    [HideInInspector]
+    public static float changeMin = -5f;
+    [HideInInspector]
+    public static float changeMax = 5f;
 
     // Event to announce when the static data of all symbols has been stored
     public delegate void StaticDataStored();

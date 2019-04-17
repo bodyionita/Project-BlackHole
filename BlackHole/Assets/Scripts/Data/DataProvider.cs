@@ -63,11 +63,29 @@ public class DataProvider : MonoBehaviour
                 slice[symbolName].AsBsonDocument.Add("low", data["low"]);
                 slice[symbolName].AsBsonDocument.Add("volume", data["volume"]);
 
-                slice[symbolName].AsBsonDocument.Add("change", (data["close"].AsDouble / data["open"].AsDouble-1) * 100);
-                //slice[symbolName].AsBsonDocument.Add("pe", data["close"].AsDouble / slice[symbolName].AsBsonDocument["ttmEPS"].AsDouble);                              
+                // volume to price ratio
+                slice[symbolName].AsBsonDocument.Add("vtp", (double)data["volume"].ToInt64() / data["close"].ToDouble());
+
+                // change in price
+                slice[symbolName].AsBsonDocument.Add("change", (data["close"].AsDouble / data["open"].AsDouble -1 ) * 100);
+
+
+                // eps and pe ratio
+                string usedEPS;
+                double eps;                
+                double latestEPS = slice[symbolName].AsBsonDocument["latestEPS"].ToDouble();
+                double ttmEPS = slice[symbolName].AsBsonDocument["ttmEPS"].ToDouble();
+                if (latestEPS != 0) { eps = latestEPS; usedEPS = "latestEPS"; }
+                else { eps = ttmEPS; usedEPS = "ttmEPS"; }
+
+                double pe = 0;
+                if (eps != 0) pe = data["close"].AsDouble / latestEPS;
+
+                slice[symbolName].AsBsonDocument.Add("usedEPS", usedEPS);
+                slice[symbolName].AsBsonDocument.Add("eps", eps);
+                slice[symbolName].AsBsonDocument.Add("pe", pe);                              
             }
         }
-        Debug.Log("Slice ready: " + slice);
         OnSliceReady(slice);
     }
 
