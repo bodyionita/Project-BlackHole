@@ -28,7 +28,7 @@ public class SimManager : MonoBehaviour
     }
 
     [SerializeField, Range(1f, 10f)]
-    private float _secondsPerSlice = 1f;
+    private float _secondsPerSlice = 2f;
     public float secondsPerSlice
     {
         get
@@ -48,6 +48,11 @@ public class SimManager : MonoBehaviour
     // Event to announce another one day slice of data is needed
     public delegate void SliceNeededHandler(BsonDateTime date);
     public static event SliceNeededHandler OnSliceNeeded;
+
+    // Event to announce the change of the simulation status
+    public delegate void SimulationStatusUpdatedHandler();
+    public static event SimulationStatusUpdatedHandler OnSimulationStatusUpdated;
+
 
     private void Awake()
     {
@@ -88,7 +93,7 @@ public class SimManager : MonoBehaviour
         var data = DataTranslator.TranslateSlice(currentSlice);
         //StartCoroutine(DataSmoothner.ins.SmoothUpdate(pm, data));
         pm.UpdatePlanets(data);
-        if (pause == false)  simulationUpdate.Activate();
+        if (pause == false) simulationUpdate.Activate(); else simulationUpdate.Deactivate();
     }
 
     private void StartSimulation()
@@ -123,16 +128,16 @@ public class SimManager : MonoBehaviour
         currentSlice = slice;   
     }
 
-    public void ToggleSimulation()
+    public void SetSimulation(bool status)
     {
-        pm.SetPlanets(pause);
-        pause = !pause;
+        pause = !status;
+        pm.SetPlanets(status);
+        if (OnSimulationStatusUpdated != null) OnSimulationStatusUpdated();
     }
 
     public void StopSimulation()
     {
-        pm.SetPlanets(pause);
-        pause = true;
+        SetSimulation(false);
         StopAllCoroutines();
         SceneLoader.LoadScene(SceneName.MainMenu);
     }

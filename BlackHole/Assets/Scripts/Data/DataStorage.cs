@@ -20,7 +20,7 @@ public class DataStorage : MonoBehaviour
     [HideInInspector]
     public static float marketcapMax = (float)(2 * Mathf.Pow(10, 12) / marketcapDiv);
     [HideInInspector]
-    public static float epsMin = -2f;
+    public static float epsMin = -5f;
     [HideInInspector]
     public static float epsMax = 10f;
     [HideInInspector]

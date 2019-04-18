@@ -15,7 +15,7 @@ public class Planet
     public const float orbitPeriodHigh = 30f;
 
     public const float orbitAngleLow = 0f;
-    public const float orbitAngleHigh = 5f;
+    public const float orbitAngleHigh = 10f;
 
     [Range(sizeLow, sizeHigh), SerializeField]
     private float _size;

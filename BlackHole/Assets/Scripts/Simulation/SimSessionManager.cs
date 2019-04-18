@@ -25,7 +25,6 @@ public class SimSessionManager : MonoBehaviour
     {
         SceneManager.sceneLoaded += OnSceneLoad;
         MainMenuUI.OnStartPressed += StartPreparing;
-
     }
 
     private void OnDisable()

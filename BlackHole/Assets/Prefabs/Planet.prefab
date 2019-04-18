@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   planet:
-    _size: 0.5
+    _size: 1
     _orbitRadius: 10
     _orbitPeriod: 10
     _orbitAngle: 0

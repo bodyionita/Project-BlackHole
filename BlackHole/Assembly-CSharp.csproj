@@ -80,6 +80,7 @@
     <Compile Include="Assets\Scripts\UI\MainMenuUI.cs" />
     <Compile Include="Assets\Scripts\UI\SceneLoader.cs" />
     <Compile Include="Assets\Scripts\UI\SimulationUI.cs" />
+    <Compile Include="Assets\Scripts\UI\TooltipArrow.cs" />
     <Compile Include="Assets\Third Party\CardboardControl\DemoScenes\Scripts\ControlsDemoManager.cs" />
     <Compile Include="Assets\Third Party\CardboardControl\DemoScenes\Scripts\Laser.cs" />
     <Compile Include="Assets\Third Party\CardboardControl\DemoScenes\Scripts\MovingCharacterController.cs" />

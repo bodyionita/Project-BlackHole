@@ -34,11 +34,14 @@ public static class DataTranslator
                 p.color = Color.Lerp(Color.red, Color.green, changeLerp);
                 p.size = Mathf.Lerp(Planet.sizeLow, Planet.sizeHigh, marketcapLerp);
                 p.orbitPeriod = Mathf.Lerp(Planet.orbitPeriodHigh, Planet.orbitPeriodLow, volumeLerp);
-                p.orbitRadius = Mathf.Lerp(Planet.orbitRadiusLow, Planet.orbitRadiusHigh, peLerp);
-                p.orbitAngle = Mathf.Lerp(Planet.orbitAngleLow, Planet.orbitAngleHigh, epsLerp);
+                p.orbitRadius = Mathf.Lerp(Planet.orbitRadiusLow, Planet.orbitRadiusHigh, epsLerp);
+                p.orbitAngle = Mathf.Lerp(Planet.orbitAngleLow, Planet.orbitAngleHigh, peLerp);
 
                 planets.Add(pIndex, p);
-            }           
+            } else
+            {
+                Debug.Log("Translator has not found data for: " + doc.Name + "(index: " + pIndex + ")");
+            }
             
             
         }

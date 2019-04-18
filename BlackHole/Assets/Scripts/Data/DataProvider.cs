@@ -79,11 +79,15 @@ public class DataProvider : MonoBehaviour
                 else { eps = ttmEPS; usedEPS = "ttmEPS"; }
 
                 double pe = 0;
-                if (eps != 0) pe = data["close"].AsDouble / latestEPS;
+                if (eps != 0) pe = data["close"].AsDouble / eps;
 
                 slice[symbolName].AsBsonDocument.Add("usedEPS", usedEPS);
                 slice[symbolName].AsBsonDocument.Add("eps", eps);
                 slice[symbolName].AsBsonDocument.Add("pe", pe);                              
+            }
+            else
+            {
+                //Debug.Log("Provider has found no data for: " + symbolName);
             }
         }
         OnSliceReady(slice);
