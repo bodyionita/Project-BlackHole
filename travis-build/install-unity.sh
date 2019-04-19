@@ -25,12 +25,11 @@ download() {
 
 # Downloads and installs a package from an internet URL
 install() {
-	PACKAGE_URL=$1
-	PACKAGE_NAME = $2
+
 	download $1 $2
 
-	echo "Installing $sPACKAGE_NAME"
-	sudo installer -dumplog -package $UNITY_DOWNLOAD_CACHE/$PACKAGE_NAME -target /
+	echo "Installing $2"
+	sudo installer -dumplog -package $UNITY_DOWNLOAD_CACHE/$2 -target /
 }
 
 
