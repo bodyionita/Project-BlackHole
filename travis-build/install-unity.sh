@@ -17,6 +17,7 @@ download() {
 		echo "$FILE does not exist. Downloading from $URL: "
 		mkdir -p "$UNITY_DOWNLOAD_CACHE"
 		curl -o $UNITY_DOWNLOAD_CACHE/`basename "$URL"` "$URL"
+		ls $UNITY_DOWNLOAD_CACHE
 	else
 		echo "$FILE Exists. Skipping download."
 	fi
@@ -38,4 +39,4 @@ ls $UNITY_DOWNLOAD_CACHE
 
 echo "Installing Unity..."
 install $UNITY_OSX_PACKAGE_URL
-install $UNITY_WINDOWS_TARGET_PACKAGE_URL
+install $UNITY_ANDROID_TARGET_PACKAGE_URL
