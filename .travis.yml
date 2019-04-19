@@ -1,10 +1,10 @@
-language: objective-c
+    language: objective-c
 osx_image: xcode9.2
 rvm:
 - 2.2         #see before_install for getting RVM stable.
 
 env:
-- TRAVIS_TAG="Deploy-2018.3.7f1" PROJECT_NAME="Project BlackHole" UNITY_PROJECT_PATH="BlackHole"
+- TRAVIS_TAG="v1.0" PROJECT_NAME="Project BlackHole" UNITY_PROJECT_PATH="BlackHole"
 
 
 cache:
@@ -22,6 +22,21 @@ install:
 script:
 - ./travis-build/build.sh
 - ./travis-build/run-tests.sh
+
+after_success:
+- ./travis-build/export-unity-package.sh
+
+before_deploy:
+- DEPLOY_UNITYPACKAGE="$(ls -a release/*.zip | head -n 1)"
+
+deploy:
+  provider: releases
+  api_key: "3a1a4e6e2d71804964c1068db785e14c2d9e483b"
+  file: $DEPLOY_UNITYPACKAGE
+  skip_cleanup: true
+  overwrite: true
+  on:
+    tags: true 
 
 notifications:
   email: never

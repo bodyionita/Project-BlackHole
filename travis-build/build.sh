@@ -16,7 +16,7 @@ mkdir $UNITY_BUILD_DIR
   -batchmode \
   -nographics \
   -username "bionita.anglia@gmail.com" \
-  -password "BlackHole2019"
+  -password "BlackHole2019" \
   -silent-crashes \
   -logFile \
   -projectPath "$PROJECT_PATH" \
