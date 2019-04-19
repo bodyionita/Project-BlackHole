@@ -32,8 +32,11 @@ else
   ERROR_CODE=1
 fi
 
-#echo 'Build logs:'
-#cat $LOG_FILE
+echo 'Build logs:'
+cat $LOG_FILE
+
+echo 'Build folder contents:'
+ls -a -l $UNITY_BUILD_DIR
 
 echo "Finishing with code $ERROR_CODE"
 exit $ERROR_CODE

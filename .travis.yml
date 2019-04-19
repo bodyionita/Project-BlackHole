@@ -26,9 +26,6 @@ script:
 after_success:
 - ./travis-build/export-unity-package.sh
 
-before_deploy:
-- DEPLOY_UNITYPACKAGE="$(ls -a release/*.zip | head -n 1)"
-
 deploy:
   provider: releases
   api_key: "3a1a4e6e2d71804964c1068db785e14c2d9e483b"
