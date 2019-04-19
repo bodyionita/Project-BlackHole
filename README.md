@@ -1,4 +1,4 @@
-# Android VR - BlackHole [![Build Status](https://travis-ci.com/bodyionita/Project-BlackHole.svg?branch=master)](https://travis-ci.com/bodyionita/Project-BlackHole) [![codecov](https://codecov.io/gh/bodyionita/Project-BlackHole/branch/master/graph/badge.svg)](https://codecov.io/gh/bodyionita/Project-BlackHole)
+# Android VR - BlackHole [![Build Status](https://travis-ci.com/bodyionita/Project-BlackHole.svg?branch=master)](https://travis-ci.com/bodyionita/Project-BlackHole)
 
 *This is an industry project on which my dissertation is based on. The paper can be found [here]().
 The project development ran from :calendar: __09/2018__ to __04/2019__. :calendar:*
@@ -14,15 +14,26 @@ visualising everything in Virtual Reality through the use of an Android mobile p
 [Google Cardboard](https://vr.google.com/cardboard/)
 
 
-## BlackHole - Unity
+## Getting Started
 
-### Getting Started
-
-#### Stock Market Data 
+### Data
 
 In order to get the data required for this project, please visit [Project BlackHole Data Gathering](https://github.com/bodyionita/Project-BlackHole-DataGathering) repo.
 
-### Testing 
+### Unity
+
+1. The project was build using Unity3D version 2018.3.7f. [Download](https://unity3d.com/unity/whats-new/2018.3.7) the Unity Editor and Android Targe Support for you OS (Windows/MacOS) and install them.
+2. Get git
+3. Clone this repository by `git clone https://github.com/bodyionita/Project-BlackHole.git`
+4. Open in Unity the project with the root in `BlackHole` folder
+5. Build the project and export as an `.apk` which can then be installed on an Android phone.
+
+### Configurations
+1. `Assets/Scripts/Data/StreamRequest.cs:16` - change the connection string to the one to your database 
+2. `Assets/Scripts/Planet/Planet.cs:8-18` - change to limits of the planets visual configurations
+3. `Assets/Scripts/Simulation/SimManager.cs:30-31` - change how many seconds one day of simulation takes
+4. `Assets/Third Party/loadingBar/scripts/loadingtext.cs:12` - change how many seconds the loading screen should take (based on how much pre streaming you want the application to do
+5. `Assets/UI/TooltipArrow.cs:29:31` - parametres of the tooltip arrow which appears when hovering a planet
 
 
 ## Contributors :pencil2:
