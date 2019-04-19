@@ -10,7 +10,7 @@ UNITY_ANDROID_TARGET_PACKAGE_URL="https://download.unity3d.com/download_unity/9e
 download() {
 
 	URL=$1
-	FILE=`basename "$URL"`
+	FILE=$2
 	
 	# Downloads a package if it does not already exist in cache
 	if [ ! -e $UNITY_DOWNLOAD_CACHE/$2 ] ; then
@@ -30,7 +30,7 @@ install() {
 	download $1 $2
 
 	echo "Installing $sPACKAGE_NAME"
-	sudo installer -dumplog -package $UNITY_DOWNLOAD_CACHE/`basename "$PACKAGE_URL"` -target /
+	sudo installer -dumplog -package $UNITY_DOWNLOAD_CACHE/$PACKAGE_NAME -target /
 }
 
 
@@ -39,5 +39,5 @@ echo "Contents of Unity Download Cache:"
 ls $UNITY_DOWNLOAD_CACHE
 
 echo "Installing Unity..."
-install $UNITY_OSX_PACKAGE_URL "unity_osx"
-install $UNITY_ANDROID_TARGET_PACKAGE_URL "unity_android"
+install $UNITY_OSX_PACKAGE_URL "unity_osx.pkg"
+install $UNITY_ANDROID_TARGET_PACKAGE_URL "unity_android.pkg"
