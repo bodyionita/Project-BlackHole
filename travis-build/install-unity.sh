@@ -13,10 +13,10 @@ download() {
 	FILE=`basename "$URL"`
 	
 	# Downloads a package if it does not already exist in cache
-	if [ ! -e $UNITY_DOWNLOAD_CACHE/`basename "$URL"` ] ; then
+	if [ ! -e $UNITY_DOWNLOAD_CACHE/$2 ] ; then
 		echo "$FILE does not exist. Downloading from $URL: "
 		mkdir -p "$UNITY_DOWNLOAD_CACHE"
-		curl -o $UNITY_DOWNLOAD_CACHE/`basename "$URL"` "$URL"
+		curl -o $UNITY_DOWNLOAD_CACHE/$2` "$URL"
 		ls $UNITY_DOWNLOAD_CACHE
 	else
 		echo "$FILE Exists. Skipping download."
@@ -26,9 +26,10 @@ download() {
 # Downloads and installs a package from an internet URL
 install() {
 	PACKAGE_URL=$1
-	download $1
+	PACKAGE_NAME = $2
+	download $1 $2
 
-	echo "Installing `basename "$PACKAGE_URL"`"
+	echo "Installing $sPACKAGE_NAME"
 	sudo installer -dumplog -package $UNITY_DOWNLOAD_CACHE/`basename "$PACKAGE_URL"` -target /
 }
 
@@ -38,5 +39,5 @@ echo "Contents of Unity Download Cache:"
 ls $UNITY_DOWNLOAD_CACHE
 
 echo "Installing Unity..."
-install $UNITY_OSX_PACKAGE_URL
-install $UNITY_ANDROID_TARGET_PACKAGE_URL
+install $UNITY_OSX_PACKAGE_URL "unity_osx"
+install $UNITY_ANDROID_TARGET_PACKAGE_URL "unity_android"
