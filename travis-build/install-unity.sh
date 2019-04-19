@@ -16,7 +16,7 @@ download() {
 	if [ ! -e $UNITY_DOWNLOAD_CACHE/$2 ] ; then
 		echo "$FILE does not exist. Downloading from $URL: "
 		mkdir -p "$UNITY_DOWNLOAD_CACHE"
-		curl -o $UNITY_DOWNLOAD_CACHE/$2` "$URL"
+		curl -o $UNITY_DOWNLOAD_CACHE/$2 "$URL"
 		ls $UNITY_DOWNLOAD_CACHE
 	else
 		echo "$FILE Exists. Skipping download."
