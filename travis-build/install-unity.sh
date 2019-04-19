@@ -3,9 +3,8 @@
 # See https://unity3d.com/get-unity/download/archive
 # to get download URLs
 UNITY_DOWNLOAD_CACHE="$(pwd)/unity_download_cache"
-UNITY_OSX_PACKAGE_URL="http://download.unity3d.com/download_unity/6e9a27477296/MacEditorInstaller/Unity.pkg?_ga=2.67469139.335044655.1551716247-42546876.1546952479"
-UNITY_ANDROID_TARGET_PACKAGE_URL="http://download.unity3d.com/download_unity/6e9a27477296/MacEditorTargetInstaller/UnitySetup-Android-Support-for-Editor-2018.3.0f2.pkg?_ga=2.226925407.335044655.1551716247-42546876.1546952479"
-
+UNITY_OSX_PACKAGE_URL="https://download.unity3d.com/download_unity/9e14d22a41bb/MacEditorInstaller/Unity.pkg?_ga=2.99758302.1799409747.1555029489-42546876.1546952479"
+UNITY_ANDROID_TARGET_PACKAGE_URL="https://download.unity3d.com/download_unity/9e14d22a41bb/MacEditorTargetInstaller/UnitySetup-Android-Support-for-Editor-2018.3.7f1.pkg?_ga=2.99758302.1799409747.1555029489-42546876.1546952479"
 
 # Downloads a file if it does not exist
 download() {

@@ -28,7 +28,7 @@ public class SimManager : MonoBehaviour
     }
 
     [SerializeField, Range(1f, 10f)]
-    private float _secondsPerSlice = 2f;
+    private float _secondsPerSlice = 1f;
     public float secondsPerSlice
     {
         get

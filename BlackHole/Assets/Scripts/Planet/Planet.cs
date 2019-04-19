@@ -8,7 +8,7 @@ public class Planet
     public const float sizeLow = 1f;
     public const float sizeHigh = 4f;
 
-    public const float orbitRadiusLow = 10f;
+    public const float orbitRadiusLow = 5f;
     public const float orbitRadiusHigh = 60f;
 
     public const float orbitPeriodLow = 10f;
