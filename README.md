@@ -1,6 +1,6 @@
 # Android VR - BlackHole [![Build Status](https://travis-ci.com/bodyionita/Project-BlackHole.svg?branch=master)](https://travis-ci.com/bodyionita/Project-BlackHole)
 
-*This is an industry project on which my dissertation is based on. The paper can be found [here](https://drive.google.com/file/d/1EaVCF7VU8gH9VLK3lrNfQ-2uwO1yFhPz/view?usp=sharing).
+*This is an industry project on which my dissertation is based on. The paper can be found [***HERE***](https://drive.google.com/file/d/1EaVCF7VU8gH9VLK3lrNfQ-2uwO1yFhPz/view?usp=sharing).
 The project development ran from :calendar: __09/2018__ to __04/2019__. :calendar:*
 
 ## About :information_source:
