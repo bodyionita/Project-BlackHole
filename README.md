@@ -3,6 +3,8 @@
 *This is an industry project on which my dissertation is based on. The paper can be found [***HERE***](https://drive.google.com/file/d/1EaVCF7VU8gH9VLK3lrNfQ-2uwO1yFhPz/view?usp=sharing).
 The project development ran from :calendar: __09/2018__ to __04/2019__. :calendar:*
 
+![App view](https://github.com/bodyionita/Project-BlackHole/blob/master/app_tooltip.JPG)
+
 ## About :information_source:
 
 The project **BlackHole** is a holographic galaxy built around a black hole where all the stars represent 
@@ -61,3 +63,16 @@ In order to get the data required for this project, please visit [Project BlackH
 
 This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE)
 file for details
+
+
+
+![Screenshots from apps menu](https://github.com/bodyionita/Project-BlackHole/blob/master/app_phone.jpg)
+
+![Screenshots from apps menu](https://github.com/bodyionita/Project-BlackHole/blob/master/data_gatherer_architecture.jpg)
+
+![Screenshots from apps menu](https://github.com/bodyionita/Project-BlackHole/blob/master/application_architecture.jpg)
+
+![Screenshots from apps menu](https://github.com/bodyionita/Project-BlackHole/blob/master/database_model.jpg)
+
+
+
